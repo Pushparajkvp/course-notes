@@ -20,7 +20,7 @@
         2. Windows.Globalization.applicationLanguage is used to set the applciation language for testing
         3. Create folders for languages like en-ES,en-US etc and it will be automatically selected 
         4. **MultiLingual app toolkit**
-    9. FlowDirection
+    9.  FlowDirection
 2. Image
     1. Source
         1. deault is ms-appx://
