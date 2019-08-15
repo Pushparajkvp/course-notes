@@ -48,7 +48,7 @@
     ```html
     <style>
         h2 {
-            width: 80vw; 
+            width: 80vw;
         }
         p {
             width: 75vmin;
