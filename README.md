@@ -4,13 +4,13 @@
 
 1. HTML and CSS
     1. [Basic HTML and HTML5](HTMLAndCSS/FCC-Basic-HTML-and-HTML5.md)
-    1. [Basic CSS](HTMLandCSS/FCC-Introduction-to-Basic-CSS.md)
-    1. [Applied Visual Design](HTMLandCSS/FCC-Applied-Visual-Design.md)
-    1. [Applied Accessibility](HTMLandCSS/FCC-Applied-Accessibility.md)
-    1. [Responsive Web Design Principles](HTMLandCSS/FCC-Responsive-Web-Design-Principles.md)
-    1. [CSS Flexbox](HTMLandCSS/FCC-CSS-Flexbox.md)
-    1. [CSS Grid](HTMLandCSS/FCC-CSS-Grid.md)
-    1. [Responsive Web Design Projects](HTMLandCSS/FCC-Responsive-Web-Design-Principles.md)
+    1. [Basic CSS](HTMLAndCSS/FCC-Introduction-to-Basic-CSS.md)
+    1. [Applied Visual Design](HTMLAndCSS/FCC-Applied-Visual-Design.md)
+    1. [Applied Accessibility](HTMLAndCSS/FCC-Applied-Accessibility.md)
+    1. [Responsive Web Design Principles](HTMLAndCSS/FCC-Responsive-Web-Design-Principles.md)
+    1. [CSS Flexbox](HTMLAndCSS/FCC-CSS-Flexbox.md)
+    1. [CSS Grid](HTMLAndCSS/FCC-CSS-Grid.md)
+    1. [Responsive Web Design Projects](HTMLAndCSS/FCC-Responsive-Web-Design-Principles.md)
 
 1. JavaScript
     1. [Basic JavaScript](JavaScript/FCC-Basic-Javascript.md)
