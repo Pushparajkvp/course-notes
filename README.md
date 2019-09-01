@@ -17,6 +17,7 @@
     1. [ES6](JavaScript/FCC-ES6.md)
     1. [Regular Expressions](JavaScript/FCC-Regular-Expressions.md)
     1. [Debugging](JavaScript/FCC-Debugging.md)
+    1. [Data Structures](JavaScript/FCC-Basic-Data-Structures.md)
 
 ## Python reference
 
