@@ -241,3 +241,17 @@
         1. Portal Operating System Interface (POSIX) specification
         1. GNU is Not Unix (GNU) Free from BSD and System V
         1. Linux came from Minux
+
+1. Linux Questions
+    1. How to connect to remote machine? ssh user@machine
+    1. How to check system information? uname -a, uname -v, uname -r (release)
+    1. How to check the current IP address? ifcondig, ip addr show,ip addr show eth0
+    1. How to check disk space? df -a(all filesystem)h(human readable)
+    1. How do you manage services? old -> service name start,status,stop new -> systemctl start name,status,stop,enable
+    1. check size of everything inside a directory? du -s(summary)h(human readable)
+    1. how to check for open ports? netstat -t(tcp)u(udp)l(listening)p(protocol)n(address and port are show as number not name)
+    1. How to check cpu usage of give process? ps aux | grep name, top
+    1. How to mount new volume? mount volume /mnt, only mount to see mounted info
+    1. What file to lookin to see what mounts on boot? /etc/fstab
+    1. How do you look stuff up? man
+    
