@@ -19,6 +19,17 @@
     1. [Debugging](JavaScript/FCC-Debugging.md)
     1. [Data Structures](JavaScript/FCC-Basic-Data-Structures.md)
     1. [Basic Algorithm Scripting](JavaScript/FCC-Basic-Algorithm-Scripting.md)
+    1. [Object Oriented Programming](JavaScript/FCC-Object-Oriented-Programming.md)
+    1. [Functional Programming](JavaScript/FCC-Functional-Programming.md)
+    1. [Intermediate Algorithm Scripting](JavaScript/FCC-Intermediate-Algorithm-Scripting.md)
+    1. [JavaScript Algorithms and Data Structures Projects](JavaScript/FCC-JavaScript-Algorithms-and-Data-Structures-Projects.md)
+
+## Computer Science
+
+1. [Networking](ComputerScience/networking.md)
+1. [Linux](ComputerScience/linux.md)
+1. [SQL](Databases/sql.md)
+1. [Protocols](ComputerScience/protocols.md)
 
 ## Python reference
 

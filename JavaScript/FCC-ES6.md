@@ -396,3 +396,88 @@ Not all browsers support ES6 features. If you use ES6 in your own projects, you 
     "use strict";
     subtract(7,4);
     ```
+
+1. Use Destructuring Assignment to Extract Values from Objects
+
+    ```javascript
+    const HIGH_TEMPERATURES = {
+        yesterday: 75,
+        today: 77,
+        tomorrow: 80
+    };
+    // change code below this line
+    const{ today, tomorrow} = HIGH_TEMPERATURES;
+    // change code above this line
+    console.log(yesterday) // should be not defined
+    console.log(today); // should be 77
+    console.log(tomorrow); // should be 80
+    ```
+
+1. Create a Module Script
+
+    ```html
+    <html>
+    <body>
+        <!-- add your code below -->
+        <script type="module" src="index.js"></script>
+        <!-- add your code above -->
+    </body>
+    </html>
+
+    ```
+
+1. Create a JavaScript Promise
+
+    ```javascript
+    const makeServerRequest = new Promise((resolve,reject)=>{});
+    ```
+
+1. Complete a Promise with resolve and reject
+
+    ```javascript
+    const makeServerRequest = new Promise((resolve, reject) => {
+        // responseFromServer represents a response from a server
+        let responseFromServer;
+        if(responseFromServer) {
+            resolve("We got the data");
+        } else {
+            reject("Data not received");
+        }
+    });
+    ```
+
+1. Handle a Fulfilled Promise with then
+
+    ```javascript
+    const makeServerRequest = new Promise((resolve, reject) => {
+        // responseFromServer is set to true to represent a successful response from a server
+        let responseFromServer = true;
+        if(responseFromServer) {
+            resolve("We got the data");
+        } else {  
+            reject("Data not received");
+        }
+        }).then(result => {
+        console.log(result);
+    });
+
+    ```
+
+1. Handle a Rejected Promise with catch
+
+    ```javascript
+    const makeServerRequest = new Promise((resolve, reject) => {
+        // responseFromServer is set to false to represent an unsuccessful response from a server
+        let responseFromServer = false;
+        if(responseFromServer) {
+            resolve("We got the data");
+        } else {  
+            reject("Data not received");
+        }
+    });
+    makeServerRequest.then(result => {
+        console.log(result);
+        }).catch(error => {
+        console.log(error);
+    });
+    ```

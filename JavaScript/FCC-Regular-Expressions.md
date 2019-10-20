@@ -260,3 +260,13 @@
     let wsRegex = /^\s+(.*?)\s+$/; // Change this line
     let result = hello.replace(wsRegex,"$1"); // Change this line
     ```
+
+1. Check For Mixed Grouping of Characters
+
+    ```javascript
+    let myString = "Eleanor Roosevelt";
+    let myRegex =  /(Franklin|Eleanor).*Roosevelt/; // Change this line
+    let result = myRegex.test(myString); // Change this line
+    console.log(result);
+    // After passing the challenge experiment with myString and see how the grouping works
+    ```

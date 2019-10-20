@@ -1664,3 +1664,42 @@
         return num > 0 ? "positive" : num == 0? "zero" : "negative";
     }
     ```
+
+1. Replace Loops using Recursion
+
+    ```javascript
+    function sum(arr, n) {
+        // Only change code below this line
+        if(n==0)
+            return arr[0];
+        return sum(arr, n-1) + arr[n];
+        // Only change code above this line
+    }
+    ```
+
+1. Use Recursion to Create a Range of Numbers
+
+    ```javascript
+    function rangeOfNumbers(startNum, endNum) {
+        if(startNum == endNum)
+            return [startNum];
+        var result = rangeOfNumbers(startNum, endNum -1);
+        result.push(endNum);
+        return result;
+    };
+
+    ```
+
+1. Use Recursion to Create a Countdown
+
+    ```javascript
+    //Only change code below this line
+    function countdown(myArray, n){
+        if(n==1)
+            return myArray.push(1);
+        else if(n<1)
+            return myArray;
+        myArray.push(n);
+        return countdown(myArray,n-1);
+    }
+    ```
