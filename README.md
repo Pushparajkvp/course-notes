@@ -30,7 +30,7 @@
 1. [Linux](ComputerScience/linux.md)
 1. [SQL](Databases/sql.md)
 1. [Protocols](ComputerScience/protocols.md)
-1. [Data Strucute](DataStructures/dataStructures.md)
+1. [Data Structures](DataStructures/dataStructures.md)
 
 ## Python reference
 
