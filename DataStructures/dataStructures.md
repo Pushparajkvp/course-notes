@@ -4,18 +4,18 @@
 1. Abstract Data Types VS Data Structures
     1. An Abstract data type is an abstraction of a data structure which provides only the interface to which the data structure must adhere to.
     1. It Does not indicate specific details about how something should be implemented or in what programming language.
-    1. ![ADT](images/ADT.jpg)
+    1. ![ADT](Images/ADT.jpg)
 1. Computation Complexity
     1. How much time and space is needed?
     1. Big O
         1. Only cares about worst case.
-        1. ![Big O](images/bigo.jpg)
+        1. ![Big O](Images/bigo.jpg)
         1. Can ignore constants because n-> infinity(In real world this constant might matter)
-        1. ![O(1) Constant](images/o1.jpg)
-        1. ![O(n) Linear](images/on.jpg)
-        1. ![O(n2) Quadraic](images/on2.jpg)
+        1. ![O(1) Constant](Images/o1.jpg)
+        1. ![O(n) Linear](Images/on.jpg)
+        1. ![O(n2) Quadraic](Images/on2.jpg)
         1. n + (n-1) + (n-2) ... = n(n+1)/2
-        1. ![O(logn) Logarithimic](images/ologn.jpg)
+        1. ![O(logn) Logarithimic](Images/ologn.jpg)
         1. Multiply the loops on different levels and add the loops on the same level
         1. Examples
             1. Finding all subsets of a set -> O(2^n)
@@ -34,27 +34,27 @@
             1. Lookup tables and inverse lookup tables
             1. To return multiple values from a function
             1. Used in DP to cache answers for sub problems
-        1. ![Array Complexity](images/arraycomplexity.jpg)
+        1. ![Array Complexity](Images/arraycomplexity.jpg)
     1. Dynamic Arrays
         1. Dynamic arrays can grow and shrink and can have methods like add and remove
-        1. ![Dynamic Array Implementation With Static Arrays](images/dynamicarrayimpl.jpg)
+        1. ![Dynamic Array Implementation With Static Arrays](Images/dynamicarrayimpl.jpg)
 1. Linked Lists
     1. Used in many lists, queue and graph implementation.
     1. Great to create circular lists.
     1. Can easily model real world objects like train.
     1. Used in separate chainging which is present in certain hashtable implementations to deal with hashing collisions.
     1. Often used in implementation of adjacentcy lists of graph.
-    1. ![Linked List](images/linkedlist.jpg)
-    1. ![Doubly Linked List](images/doublylinkedlist.jpg)
-    1. ![Pros and cons](images/dllsllprosandcons.jpg)
+    1. ![Linked List](Images/linkedlist.jpg)
+    1. ![Doubly Linked List](Images/doublylinkedlist.jpg)
+    1. ![Pros and cons](Images/dllsllprosandcons.jpg)
     1. 64 bit machine -> points use 8 bytes
     1. In Doubly linkedlist we can remove node in constant time
-    1. ![Insert Singly Linkedlist](images/insertsinglylinkedlist.jpg)
-    1. ![Insert doubly Linkedlist](images/insertdoublylinkedlist.jpg)
-    1. ![Remove Sinlgy Linkedlist](images/removesinglylinkedlist.jpg)
-    1. ![Remove doubly Linkedlist](images/removedoublylinkedlist.jpg)
-    1. ![Complexity 1](images/linkedlistcomplexity1.jpg)
-    1. ![Complexity 2](images/linkedlistcomplexity2.jpg)
+    1. ![Insert Singly Linkedlist](Images/insertsinglylinkedlist.jpg)
+    1. ![Insert doubly Linkedlist](Images/insertdoublylinkedlist.jpg)
+    1. ![Remove Sinlgy Linkedlist](Images/removesinglylinkedlist.jpg)
+    1. ![Remove doubly Linkedlist](Images/removedoublylinkedlist.jpg)
+    1. ![Complexity 1](Images/linkedlistcomplexity1.jpg)
+    1. ![Complexity 2](Images/linkedlistcomplexity2.jpg)
 1. Stack
     1. A stack is a one-ended linear data structure which models a real world stack by having 2 primary operations - push and pop
     1. Last In First Out (LIFO)
@@ -63,8 +63,8 @@
         1. Compiler syntax checking for matching brackets
         1. Used behind the scenes in recursion
         1. Used in DFS
-    1. ![Stack Complexity](images/stackComplexity.jpg)
-    1. ![Stack Demo](images/stackDemo.jpg)
+    1. ![Stack Complexity](Images/stackComplexity.jpg)
+    1. ![Stack Demo](Images/stackDemo.jpg)
 1. Queue
     1. A queue is a linear data structure which models real world queue by having 2 primary operations - enqueue and dequeue
     1. First In Last Out (FIFO)
@@ -75,12 +75,12 @@
         1. Can be used to efficeintly keep track of the x most recently added elements.
         1. Web server management
         1. Used in BFS
-    1. ![Queue Demo](images/queueDemo.jpg)
-    1. ![Queue Complexity](images/queueComplexity.jpg)
+    1. ![Queue Demo](Images/queueDemo.jpg)
+    1. ![Queue Complexity](Images/queueComplexity.jpg)
 1. Heap
     1. A heap is a tree based data strucuture that satisfies the heap varient.
     1. Heap varient : If A is a parent node of B then A is ordered with respect to B for all nodes A,B in the heap.
-    1. ![Heap Definition](images/heapDef.jpg)
+    1. ![Heap Definition](Images/heapDef.jpg)
     1. All Heaps must be trees
     1. Some common types of heaps,
         1. Binary heap
@@ -89,11 +89,11 @@
         1. Pairing heap
     1. Complete Binary tree
         1. A complete binary tree is a tree in which at every level, except possibly the last is completely filled and all the nodes are as far left as possible.
-        1. ![Complete Binary Tree](images/completeBinaryTree.jpg)
+        1. ![Complete Binary Tree](Images/completeBinaryTree.jpg)
     1. Binary heap
         1. A binary heap is a binary tree that supports the heap invarient.
         1. Binary heap can be implemented using arrays.
-        1. ![Binary heap representation](images/binaryHeapRepresentation.jpg)
+        1. ![Binary heap representation](Images/binaryHeapRepresentation.jpg)
         1. If i is the parent node 2i+1 is it's left child and 2i+2 is it's right child (zero based)
         1. Adding an element
             1. Add to the left most and bottom most position of the complete binary tree and bubble or swim it to its right position
@@ -114,8 +114,8 @@
         1. Used in huffman coding (Lossless data compression)
         1. Best First Search such as A* use heaps to grab the next most promising node.
         1. Used in minimum spanning tree algo
-    1. ![PQ with Binary heap complexity](images/PQBinHeapComplexity.jpg)
-    1. ![PQ with Binary heap complexity 2](images/PQBinHeapComplexisty2.jpg)
+    1. ![PQ with Binary heap complexity](Images/PQBinHeapComplexity.jpg)
+    1. ![PQ with Binary heap complexity 2](Images/PQBinHeapComplexisty2.jpg)
     1. Turning Min PQ to Max PQ
         1. This can be done by negating the comparable interface
         1. Another method is to negate the number before insertion and negate again during polling
