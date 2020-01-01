@@ -90,6 +90,10 @@
     1. Complete Binary tree
         1. A complete binary tree is a tree in which at every level, except possibly the last is completely filled and all the nodes are as far left as possible.
         1. ![Complete Binary Tree](Images/completeBinaryTree.jpg)
+        1. 2^(h+1) - 1 --> maximum number of nodes in a binary tree of height h
+        1. floor(logn) --> height of binary tree given number of nodes n
+        1. If the last level is half filled from left to right then it is called almost complete binary tree
+        1. In a complete binary tree (n/2 + 1) to n all will be leaf nodes.
     1. Binary heap
         1. A binary heap is a binary tree that supports the heap invarient.
         1. Binary heap can be implemented using arrays.
@@ -104,8 +108,12 @@
             1. In case of a tie select the left node
             1. Check the invarient to decide on whether to bubble up or bubble down
             1. Polling - O(longn) Removing - O(n)
+    1. Heapify
+        1. Leaf nodes satisfy the heap invareint already so don't iterate through the leaf nodes.
+        1. Start from the node with largest index which is not a leaf node and sink the node.
 1. Priority Queue
     1. Priority queues are implemented using Heaps
+    1. Priority queues does not allow null values because they cannot be compared.
     1. A priority queue is an Abstract Data Type (ADT) that operates similar to normal queue except that each element has a certain priority. The priority of the element in the priority queue determine the order in which elements are removed from the priority queue.
     1. Priority queues only supports comparable data, meaning data inserted into the priority queue must be able to be ordered in some way either from least to greatest or gratest to least.
     1. Common usages
