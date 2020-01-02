@@ -133,16 +133,16 @@
     1. Union -> merges 2 groups together
     1. Common Usage
         1. Kruskal's minimum spanning tree
-            1. ![Kruskal Example](images/kruskalUnionFind.jpg)
+            1. ![Kruskal Example](Images/kruskalUnionFind.jpg)
         1. Grid percolation
         1. Network connectivity
         1. Least common ancestor in trees
         1. Image processing
-    1. ![Union Find Complexity](images/unionFindComplexity.jpg)
-    1. ![Magnets Union Find](images/magnets.jpg)
+    1. ![Union Find Complexity](Images/unionFindComplexity.jpg)
+    1. ![Magnets Union Find](Images/magnets.jpg)
     1. Creating Union Find
         1. To begin using Union Find, first construct a bijection (a mapping) between your objects and the integers in range [0,n), this step is not mandatory but it allows us to create an array based union find
-        1. ![Union Find Example](images/unionFindExample.jpg)
+        1. ![Union Find Example](Images/unionFindExample.jpg)
     1. Find -> To find which component a particular element belongs to, find the root of that component by following the parent nodes until a self loop is reached
     1. Unify -> To unify two elements, find which are the root nodes of each component and if the root nodes are from different component, make one root node to be the parent of other root node
     1. Union Find does not have amortised time complexity without path compression
