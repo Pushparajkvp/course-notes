@@ -127,3 +127,25 @@
     1. Turning Min PQ to Max PQ
         1. This can be done by negating the comparable interface
         1. Another method is to negate the number before insertion and negate again during polling
+1. Union Find
+    1. Union Find is a data structure that keeps track of elements which are split into one or more disjoint sets. It has 2 primary operations - Union and Find.
+    1. Find -> Given an element Union Find will tell what group the element belongs to
+    1. Union -> merges 2 groups together
+    1. Common Usage
+        1. Kruskal's minimum spanning tree
+            1. ![Kruskal Example](images/kruskalUnionFind.jpg)
+        1. Grid percolation
+        1. Network connectivity
+        1. Least common ancestor in trees
+        1. Image processing
+    1. ![Union Find Complexity](images/unionFindComplexity.jpg)
+    1. ![Magnets Union Find](images/magnets.jpg)
+    1. Creating Union Find
+        1. To begin using Union Find, first construct a bijection (a mapping) between your objects and the integers in range [0,n), this step is not mandatory but it allows us to create an array based union find
+        1. ![Union Find Example](images/unionFindExample.jpg)
+    1. Find -> To find which component a particular element belongs to, find the root of that component by following the parent nodes until a self loop is reached
+    1. Unify -> To unify two elements, find which are the root nodes of each component and if the root nodes are from different component, make one root node to be the parent of other root node
+    1. Union Find does not have amortised time complexity without path compression
+    1. Path Compression
+        1. When doing find operation point all the nodes in the path to the root once the root is found
+        1. Since once all the nodes point to the root node directly find operation becomes constant time and thus it becomes amortised constant time.
