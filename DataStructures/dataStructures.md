@@ -149,3 +149,69 @@
     1. Path Compression
         1. When doing find operation point all the nodes in the path to the root once the root is found
         1. Since once all the nodes point to the root node directly find operation becomes constant time and thus it becomes amortised constant time.
+1. Tree
+    1. A tree is an undirected graph which satisfies any of the following definitions
+        1. An acyclic connected graph
+        1. A connected graph with N nodes and N-1 edges
+        1. A graph in which any 2 vertices are connected exactly by one path
+    1. If we have a rooted tree then we will want to have a reference to the root node of the tree. Any node in a tree can be a root node.
+    1. A child node is a node extending from another node
+    1. The root node has no parent or the parent is itself(Ex: file directory)
+    1. ![File system](Images/filesystem.jpg)
+    1. A leaf node is a node with no children.
+    1. A subtree is a tree entirely contained within another. They are usually denoted by triangle
+1. Binary Trees
+    1. A tree in which every node has at most 2 children
+1. Binary Search Trees
+    1. A binary search tree is binary tree that satisfies the BST invareint.
+    1. BST invareint : left subtree has smaller elements and right subtree has larger elements.
+    1. Common usage
+        1. Implementation of some maps and set ADTs
+        1. Red black tree
+        1. AVL tree
+        1. Splay tree
+        1. Implementation of binay heap
+        1. Syntax tree
+        1. Treap - A probabilistic DS (uses a randomised BST)
+    1. ![BST complexity](Images/bstcomplexity.jpg)
+    1. Adding elements
+        1. BST elements must be comparable
+        1. Cases
+            1. '< case' -> Recurse down left subtree
+            1. '> case' -> Recurse down right subtree
+            1. '= case' -> Handle finding a duplicate value
+            1. 'null leaf' -> create a new node
+        1. ![BST adding normal case](Images/bstaddnormalcase.jpg)
+        1. ![BST adding worst case](Images/bstaddworstcase.jpg)
+    1. Removing elements
+        1. Find the element we want to remove
+            1. If we hit a null node the element is not present
+            1. comparator value `=` 0 -> found the node
+            1. comparator value `<` 0 -> the value if it exists is in left subtree
+            1. comparator value `>` 0 -> the value if it exists is in the right subtree 
+        1. Replace the node we want to remove with its successor (if any) to maintin BST invariant.
+            1. Node to remove is a leaf node
+                1. We can remove it directly without any side effects
+            1. Node to remove has a right subtree
+                1. The successor is the root node of the right subtree
+            1. Node to remove has a left subtree
+                1. The successor is the root node of the left subtree
+            1. Node to remove has a left subtree and right subtree
+                1. The successor can be the largest value in the left subtree or the smallest value in the right subtree
+                    1. Smallest value in the right subtree
+                        1. Go right one node from the node to be removed and go left as far as possible
+                        1. Copy the value to the node to be removed
+                        1. Remove the node with any of the top 3 cases
+                        1. ![Removal 1](Images/removal1.jpg)
+                        1. ![Removal 2](Images/removal2.jpg)
+                    1. Largest value in the left subtree
+                        1. Go left one node from the node to be removed and go as far right as possible
+                        1. Copy the value to the node to be removed
+                        1. Remove the node with any of the top 3 cases
+    1. Tree traversal
+        1. Various tree traversal are preorder, inorder, postorder and level order
+        1. ![Traversal types](Images/traversalorder.jpg)
+        1. Inorder traversal prints the values in increasing order
+        1. Level order traversal
+            1. Print nodes one layer at a time
+            1. It is done using BFS (Breadth First Search)
