@@ -66,3 +66,8 @@
                 1. When certain instruction is executed repeatedly it won't be interpreted again and again
             1. Hotspot profiler
                 1. It helps in optimizing and tells JIT what must be compiled ust in time.
+1. Static nested class vs non static nested class
+    1. A static nested class cannot access the non static members inside the class
+    1. A non static nested class can access the non static members inside the class
+1. `<T extends Comparable<T>>`
+    1. This means that T can be any class that extends the comparable interface

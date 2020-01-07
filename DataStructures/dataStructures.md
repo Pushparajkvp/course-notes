@@ -188,7 +188,7 @@
             1. If we hit a null node the element is not present
             1. comparator value `=` 0 -> found the node
             1. comparator value `<` 0 -> the value if it exists is in left subtree
-            1. comparator value `>` 0 -> the value if it exists is in the right subtree 
+            1. comparator value `>` 0 -> the value if it exists is in the right subtree
         1. Replace the node we want to remove with its successor (if any) to maintin BST invariant.
             1. Node to remove is a leaf node
                 1. We can remove it directly without any side effects
@@ -215,3 +215,35 @@
         1. Level order traversal
             1. Print nodes one layer at a time
             1. It is done using BFS (Breadth First Search)
+1. Hash Table
+    1. A hash table is a data structure that provides a mapping from keys to values using a technique called hashing
+    1. Keys must be unique but values can be duplicate
+    1. Keys must be hashable
+    1. Common Usage
+        1. Item frequency calculation
+        1. File comparison are done with checksums hash function
+    1. Hash function
+        1. A hash function H(x) is a function that maps a key 'x' to a whole number in a fixed range
+        1. If H(x) == H(y) then objects x and y might be equal, but if H(x) != H(y) they are definitely not equal
+        1. Hash Function must be deterministic. If H(x) = y, then H(x) should also produce y
+        1. We try to make hash functions uniform, to reduce the number of collisions
+    1. Keys in hash table must be immutable
+    1. ![Hash table complexity](Images/hashtableComplexity.jpg)
+    1. Hash Collisions
+        1. Hash collision occurs when 2 values get result in same index after hash computation
+        1. Most popular hash collision resolutions are,
+            1. Seprate chaining
+                1. It deals with collisions by maintaining a data structure(usually a list) to hold all different values which hashed to a particular value
+                1. The data structure does not have to be a list it can be anything like BST, AVL trees etc
+                1. The data structure is usually called a bucket
+                1. ![Sperate Chaining](Images/seperateChaining.jpg)
+                1. FAQs
+                    1. How do I maintain O(1) insertion and lookup time complexity once my HT gets really full and we have big buckets?
+                        1. Once the HT contains a lot of elements you should create a new HT table with larger capacity and rehash all the items inside the old HT and disperse them throughout the new HT at different locations
+                    1. How to remove a key-value pair from the HT?
+                        1. Follow the same as for find and instead of returning the value, delete the element from the bucket or free memory
+                    1. Can I use another datastrucuture to model the bucket behaviour?
+                        1. Yes, common data structures are arrays, binary trees, self balancing trees or hybrid (Java hashmap)
+                        1. Java switches to self balancing binary tree once the lenght gets biggger
+            1. Linear probing
+                1. It finds another place in the hashtable by offsetting it to a position to which it was hashed to
