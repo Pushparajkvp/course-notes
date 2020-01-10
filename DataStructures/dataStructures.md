@@ -318,3 +318,29 @@
                     1. These thombstones will be removed while resizing or by a technique called "Lazy deleting"
                     1. In lazy deleting we keep the reference to the first thombstone we found in the find operation and swap the value that reference and replace old position with null
                     1. ![thombstone](Images/thomstone.jpg)
+
+## Fenwick Tree (Binary Indexed Tree)
+
+1. A fenwick tree is a data structure that supports sum range queries as well as setting values in a static array and getting the value of the prefix sum up index efficiently.
+1. ![Fenwick tree complexity](Images/fenwickTreeComplexity.jpg)
+1. We can't add or remove elements
+1. Unlick regular arrays, in a fenwick tree a specific cell is responsible for other cells as well
+1. The position of Least Significant Bit (LSB) determines the range of responsibility that cell has to the cells below.
+1. 12 -> 01100, LSB is at 3rd position so 2^(3-1) = 2^2 = 4. This means this cell is resposible for 4 cells below it.
+1. ![Fenwick tree odd numbers](Images/fenwickTreeOddNumbers.jpg)
+1. ![Fenwick tree range of responsibility](Images/fenwickTreeRangeOfResponsibility.jpg)
+1. Range Queries
+    1. In a fenwick tree we may compute the prefix sum up to a certain index, which ultimately lets us perform range sum query
+    1. To find the prefix sum of [1,i), start at i and cascade downward until we reach zero adding the values at each of the indices encountered
+    1. ![Fenwick tree range sum example](Images/fenwickTreeRangeSumExample.jpg)
+    1. ![Fenwick tree range sum algo](Images/fenwickTreeRangeSumAlgo.jpg)
+    1. Worst case for range queries is when most of the bits is 1 (We will have more LSB to find and sum). At that case the complexity is longbase2(n). In average case its faster.
+1. Point Updates
+    1. Point update are the opposite of range queries, we will have to add the LSB to propagate the values up to the cells responsible for the update
+    1. ![Fenwick tree point update](Images/fenwickTreePointUpdate.jpg)
+    1. ![Fenwick tree point update algo](Images/fenwickTreePointUpdateAlgo.jpg)
+1. Fenwick Tree Construction
+    1. Naive method would be to initialize the array to zero and do point updates for each addition to array it would give nlogn complexity
+    1. Immediate parent can be calculated by i + LSB(i) (this is what we used for point updates)
+    1. Iterate through all the elements in the array and just update the immediate parent.
+    1. ![Fenwick tree construction](Images/fenwickTreeConstruction.jpg)
