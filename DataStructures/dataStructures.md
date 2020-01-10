@@ -245,5 +245,54 @@
                     1. Can I use another datastrucuture to model the bucket behaviour?
                         1. Yes, common data structures are arrays, binary trees, self balancing trees or hybrid (Java hashmap)
                         1. Java switches to self balancing binary tree once the lenght gets biggger
-            1. Linear probing
-                1. It finds another place in the hashtable by offsetting it to a position to which it was hashed to
+            1. Open Addressing
+                1. In open addressing all the items are stored in the same table and there is no auxillary data structure involved.
+                1. This means we need to care a great deal about the size of the hash table and how many elements are currently in the table
+                1. Load Factor = (No. of items) / (size of the table)
+                1. ![Comparison](Images/openAdressingComplexity.jpg)
+                1. We need to keep the load factor below a threshold and grow the table when the threshold is met
+                1. Probing
+                    1. We obtain the hash of the key and when there is another entry with the same hash, we try another position in the hash table by offsetting the current position subject to a **Probing Sequence**.
+                    1. We keep on probing unless a spot is found
+                    1. ![Probing](Images/probing.jpg)
+                    1. Types of probing
+                        1. Linear Probing
+                            1. P(x) = ax + b, where a and b are constants
+                        1. Quadratic Probing
+                            1. P(x) = ax^2 + bx + c, where a and b are constants
+                        1. Double Hashing
+                            1. P(k,x) = x*H(k), where H(k) is a secondary hash function
+                        1. Pseudo Random Number Generator
+                            1. P(k,x) = x*RNG(H(k),x), where RNG is random number generator seeded with H(k)
+                    1. Chaos with cycles
+                        1. Most probing function that we use will end up in cycles
+                        1. ![Probing Cycle](Images/probingCycle.jpg)
+                        1. To avoid we must use probing functions that produce cycles at exactly lenght N
+                    1. Linear Probing
+                        1. P(x) = ax + b where a != 0 and b is constant and is obsolete
+                        1. Not all linear probing functions are viable because of cycles
+                        1. Chaos with cycles
+                            1. If N is the table size, then if GCD(N, a) != 1 then it will produce a cycle
+                            1. Values of N and a should be co prime to avoid cycles
+                            1. So if we choose P(x) = 1x then our GCD will always be 1 no matter that the talbe size is
+                            1. While resizing we must verify that the GCD value holds
+                    1. Quadratic probing
+                        1. P(x) = ax^2 + bx + c where a != 0
+                        1. Most randomly selected quadratic functions will end up in a cycle
+                        1. Chaos with cycles
+                            1. P(x) = x^2 and talbe size should be a prime number > 3 and load factor <= 0.5
+                            1. P(x) = (x^2 + x)/2 and talbe size should be powers of 2
+                            1. P(x) = (-1^x)*x^2 and keep table size a prime number and N congruent to 3 mod 4
+                    1. Double hashing
+                        1. P(k, x) = x*h2(k), where h2 is the secondary hash function
+                        1. Double hashing reduces to linear probing except the constant is unknown till runtime
+                        1. Chaos with cycles
+                            1. calcualte delta = h2(k) mod N where N is a prime number
+                            1. If delta == 0 then set delta to be = 1
+                            1. sincd N is prime then GCD(delta, N) is always 1 hence there will be no cycles
+                1. Removing element
+                    1. Removing elements from open addressing scheme naively will end up messing up the find operation.
+                    1. Once an entry is delete we place a thombstone at that place
+                    1. These thombstones will be removed while resizing or by a technique called "Lazy deleting"
+                    1. In lazy deleting we keep the reference to the first thombstone we found in the find operation and swap the value that reference and replace old position with null
+                    1. [!thombstone](Images/thomstone.jpg)
