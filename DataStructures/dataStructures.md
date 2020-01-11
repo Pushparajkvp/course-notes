@@ -321,6 +321,7 @@
 
 ## Fenwick Tree (Binary Indexed Tree)
 
+1. In a prefix array the updates will take more time, this is where fenwick tree comes into action.
 1. A fenwick tree is a data structure that supports sum range queries as well as setting values in a static array and getting the value of the prefix sum up index efficiently.
 1. ![Fenwick tree complexity](Images/fenwickTreeComplexity.jpg)
 1. We can't add or remove elements
@@ -329,18 +330,28 @@
 1. 12 -> 01100, LSB is at 3rd position so 2^(3-1) = 2^2 = 4. This means this cell is resposible for 4 cells below it.
 1. ![Fenwick tree odd numbers](Images/fenwickTreeOddNumbers.jpg)
 1. ![Fenwick tree range of responsibility](Images/fenwickTreeRangeOfResponsibility.jpg)
-1. Range Queries
-    1. In a fenwick tree we may compute the prefix sum up to a certain index, which ultimately lets us perform range sum query
-    1. To find the prefix sum of [1,i), start at i and cascade downward until we reach zero adding the values at each of the indices encountered
-    1. ![Fenwick tree range sum example](Images/fenwickTreeRangeSumExample.jpg)
-    1. ![Fenwick tree range sum algo](Images/fenwickTreeRangeSumAlgo.jpg)
-    1. Worst case for range queries is when most of the bits is 1 (We will have more LSB to find and sum). At that case the complexity is longbase2(n). In average case its faster.
-1. Point Updates
-    1. Point update are the opposite of range queries, we will have to add the LSB to propagate the values up to the cells responsible for the update
-    1. ![Fenwick tree point update](Images/fenwickTreePointUpdate.jpg)
-    1. ![Fenwick tree point update algo](Images/fenwickTreePointUpdateAlgo.jpg)
 1. Fenwick Tree Construction
     1. Naive method would be to initialize the array to zero and do point updates for each addition to array it would give nlogn complexity
     1. Immediate parent can be calculated by i + LSB(i) (this is what we used for point updates)
     1. Iterate through all the elements in the array and just update the immediate parent.
     1. ![Fenwick tree construction](Images/fenwickTreeConstruction.jpg)
+1. Range query and point updates
+    1. Range Queries
+        1. In a fenwick tree we may compute the prefix sum up to a certain index, which ultimately lets us perform range sum query
+        1. To find the prefix sum of [1,i), start at i and cascade downward until we reach zero adding the values at each of the indices encountered
+        1. ![Fenwick tree range sum example](Images/fenwickTreeRangeSumExample.jpg)
+        1. ![Fenwick tree range sum algo](Images/fenwickTreeRangeSumAlgo.jpg)
+        1. Worst case for range queries is when most of the bits is 1 (We will have more LSB to find and sum). At that case the complexity is longbase2(n). In average case its faster.
+    1. Point Updates
+        1. Point update are the opposite of range queries, we will have to add the LSB to propagate the values up to the cells responsible for the update
+        1. ![Fenwick tree point update](Images/fenwickTreePointUpdate.jpg)
+        1. ![Fenwick tree point update algo](Images/fenwickTreePointUpdateAlgo.jpg)
+1. Range updates and point query
+    1. Range update
+        1. In this type of fenwick tree we can update a range of numbers with just 2 adds
+        1. To update a value from 'left' to 'right' we must add(left, val) and add(right + 1, -val)
+        1. This makes updates logn
+        1. This update is done on a new tree without disturbing the actual fenwick tree
+    1. Point query
+        1. Query can be done for one element
+        1. To get the element at position i we must calculate prefixSum(i, currentTree) - prefixSum(i - 1, actualTree).
