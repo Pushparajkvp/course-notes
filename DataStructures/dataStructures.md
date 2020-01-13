@@ -349,9 +349,10 @@
 1. Range updates and point query
     1. Range update
         1. In this type of fenwick tree we can update a range of numbers with just 2 adds
-        1. To update a value from 'left' to 'right' we must add(left, val) and add(right + 1, -val)
+        1. To update a value from 'left' to 'right' we must add(left, val) and add(right + 1, -val) - Explanation for this is when we add(left, val) we are adding essentially from l to n-1 so we have to subtract r+1 to n-1
         1. This makes updates logn
         1. This update is done on a new tree without disturbing the actual fenwick tree
     1. Point query
         1. Query can be done for one element
         1. To get the element at position i we must calculate prefixSum(i, currentTree) - prefixSum(i - 1, actualTree).
+        1. aliter method -> sum all the elements till i (No need to maintain original tree). Space complexity reduced but O(n) time complexity
