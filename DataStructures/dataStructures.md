@@ -356,3 +356,14 @@
         1. Query can be done for one element
         1. To get the element at position i we must calculate prefixSum(i, currentTree) - prefixSum(i - 1, actualTree).
         1. aliter method -> sum all the elements till i (No need to maintain original tree). Space complexity reduced but O(n) time complexity
+
+## Segment Trees
+
+1. Segment trees are usually used to do range queries like max of range, sum of range etc
+1. O(n) to build segment trees, O(n) space to maintain a segment tree and answers query in O(logn)
+1. ![Segment tree minimum example](Images/segmentMinTreeExample.jpg)
+1. To find a query between a range, following 3 cases must be addressed
+    1. Partial overlap -> Look in both directions
+    1. Total overlap -> return the value at that node
+    1. No overlap -> return a really big number in case of minimum, 0 in case of sum etc
+1. ![Segment tree minimum example query](Images/segmentMinTreeExampleQuery.jpg)
