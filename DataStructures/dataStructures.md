@@ -372,5 +372,16 @@
 1. Length of segment tree is ((next power of 2) x 2) -1
 1. Total size at worst case is 4n space complexity -> O(n)
 1. Time to create the array -> O(n)
+1. To update a range of values
+    1. partial overlap -> look in both directions
+    1. total overlap -> reach to all the leaf nodes and update
+    1. No overlap -> return
+    1. if reached any leaf node update
 1. Lazy propagation
     1. Lazy propagation is an optimization technique when there are a lot of updates
+    1. We maintain another tree where we store the updates to be applied to the children
+    1. The following are the cases,
+        1. partial overlap -> look in both directions if non zero element is found in lazy prop array increment the current node and increment the children of the element in lazy prop by the same value
+        1. total overlap -> increment the node with the value and return, increment the children of the node in lazy prop tree
+        1. no overlap -> return
+    1. Since the updates are not applied until we traverse down the array this is called lazy propagation 
