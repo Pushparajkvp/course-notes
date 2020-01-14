@@ -367,3 +367,10 @@
     1. Total overlap -> return the value at that node
     1. No overlap -> return a really big number in case of minimum, 0 in case of sum etc
 1. ![Segment tree minimum example query](Images/segmentMinTreeExampleQuery.jpg)
+1. Segment trees can be implemented in arrays just like heaps
+1. left child -> 2i+1, right child -> 2i-1 and parent -> (i-1)/2
+1. Length of segment tree is ((next power of 2) x 2) -1
+1. Total size at worst case is 4n space complexity -> O(n)
+1. Time to create the array -> O(n)
+1. Lazy propagation
+    1. Lazy propagation is an optimization technique when there are a lot of updates
