@@ -384,4 +384,23 @@
         1. partial overlap -> look in both directions if non zero element is found in lazy prop array increment the current node and increment the children of the element in lazy prop by the same value
         1. total overlap -> increment the node with the value and return, increment the children of the node in lazy prop tree
         1. no overlap -> return
-    1. Since the updates are not applied until we traverse down the array this is called lazy propagation 
+    1. Since the updates are not applied until we traverse down the array this is called lazy propagation
+1. Array based efficient implementation
+    1. In array based implementation of segment trees, recursions are avoided and iterative solution is used.
+    1. A simple array of size 2*N which is not zero based and zero place is not really used
+    1. To get the parent we just device
+
+## Trie
+
+1. Trie is a tree data structure used to store collections of strings
+1. If 2 strings have common prefix they will have same ancestor in trie
+1. This can be used to store thousands of string and we can easily search if a string exists in the collection or not
+1. It can also be used to do prefix based search and sort it lexicographically
+1. Insertion into a trie
+    1. Every trie node as a ```Map<Character, TrieNode>``` and a boolean to represent end of word
+    1. If the input is just alphabets or upper case or lower cases then we can replace the hashmap with an array
+    1. Initially there is an root node with empty map
+    1. If the character is not present in the map put the element in the map and point it to a new empty trie node
+    1. If the character is present in the map get the next trie element and check the next character to insert
+    1. If the character is the last character then mark the last character with an end of word trie node
+    1. ![Insertion Example](Images/trieInsertionExample.jpg)
