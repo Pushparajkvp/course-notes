@@ -26,11 +26,27 @@
 
 ## Computer Science
 
+1. [Data Structures](DataStructures/dataStructures.md)
+    1. [Intro](DataStructures/dataStructures.md#intro)
+    1. [Arrays](DataStructures/dataStructures.md#arrays)
+        1. [Static Arrays](DataStructures/dataStructures.md#arrays)
+        1. [Dynamic Arrays](DataStructures/dataStructures.md#arrays)
+    1. [Linked Lists](DataStructures/dataStructures.md#linked-lists)
+    1. [Queue](DataStructures/dataStructures.md#queue)
+    1. [Heap](DataStructures/dataStructures.md#heap)
+    1. [Priority Queue](DataStructures/dataStructures.md#priority-queue)
+    1. [Union Find](DataStructures/dataStructures.md#union-find)
+    1. [Tree](DataStructures/dataStructures.md#tree)
+    1. [Binary Search Trees](DataStructures/dataStructures.md#binary-search-trees)
+    1. [Hash Table](DataStructures/dataStructures.md#hash-table)
+    1. [Fenwick Tree (Binary Indexed Tree)](DataStructures/dataStructures.md#fenwick-tree-binary-indexed-trees)
+    1. [Segment Trees](DataStructures/dataStructures.md#segment-trees)
+    1. [Trie](DataStructures/dataStructures.md#trie)
+    1. [Suffix Tree](DataStructures/dataStructures.md#suffix-tree)
 1. [Networking](ComputerScience/networking.md)
 1. [Linux](ComputerScience/linux.md)
 1. [SQL](Databases/sql.md)
 1. [Protocols](ComputerScience/protocols.md)
-1. [Data Structures](DataStructures/dataStructures.md)
 
 ## Python reference
 
