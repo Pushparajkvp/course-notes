@@ -39,7 +39,7 @@
     1. [Tree](DataStructures/dataStructures.md#tree)
     1. [Binary Search Trees](DataStructures/dataStructures.md#binary-search-trees)
     1. [Hash Table](DataStructures/dataStructures.md#hash-table)
-    1. [Fenwick Tree (Binary Indexed Tree)](DataStructures/dataStructures.md#fenwick-tree-binary-indexed-trees)
+    1. [Fenwick Tree (Binary Indexed Tree)](DataStructures/dataStructures.md#fenwick-tree-binary-indexed-tree)
     1. [Segment Trees](DataStructures/dataStructures.md#segment-trees)
     1. [Trie](DataStructures/dataStructures.md#trie)
     1. [Suffix Tree](DataStructures/dataStructures.md#suffix-tree)
