@@ -397,10 +397,31 @@
 1. This can be used to store thousands of string and we can easily search if a string exists in the collection or not
 1. It can also be used to do prefix based search and sort it lexicographically
 1. Insertion into a trie
-    1. Every trie node as a ```Map<Character, TrieNode>``` and a boolean to represent end of word
+    1. Every trie node as a ```Map<Character, TrieNode>```, a boolean to represent end of word and a count to handle deleting and have count of number of occurence
     1. If the input is just alphabets or upper case or lower cases then we can replace the hashmap with an array
     1. Initially there is an root node with empty map
     1. If the character is not present in the map put the element in the map and point it to a new empty trie node
     1. If the character is present in the map get the next trie element and check the next character to insert
     1. If the character is the last character then mark the last character with an end of word trie node
+    1. For every character iteration increment the count on the trie node.
     1. ![Insertion Example](Images/trieInsertionExample.jpg)
+1. Deletion from trie
+    1. Iterate through the characters
+    1. At each node decrement the count
+    1. If the count is less than or equal to zero remove all the node recursively linking from the current node
+
+## Suffix Tree
+
+1. A suffix tree is a tree representing all the suffixes of a string
+1. Example for suffixes
+    1. xyz$ -> xyz$, yz$, z$ and $
+    1. abc -> abc, bc, c
+    1. dfgrt -> dfgrt, fgrt, grt, rt, t
+1. Construction of suffix tree
+    1. O(n^3) method
+        1. Example -> abc$
+        1. for i from start to end
+        1. for j from start to i
+        1. check if path exists from i to j and do one of the following
+            1. if path does not exists create one
+            1. if path exists append
