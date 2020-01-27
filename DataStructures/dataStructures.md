@@ -417,11 +417,32 @@
     1. xyz$ -> xyz$, yz$, z$ and $
     1. abc -> abc, bc, c
     1. dfgrt -> dfgrt, fgrt, grt, rt, t
+1. An implecit suffix tree is one in which the last character is not unique
+1. A complete suffix tree is one in which the last character is unique
 1. Construction of suffix tree
     1. O(n^3) method
         1. Example -> abc$
         1. for i from start to end
-        1. for j from start to i
-        1. check if path exists from i to j and do one of the following
-            1. if path does not exists create one
-            1. if path exists append
+            1. for j from start to i
+                1. check if path exists from i to j and do one of the following
+                1. if path does not exists create one
+                1. if path exists append
+                1. if the whole sub string exists do nothing
+        1. There are 3 extensions
+            1. Walk to the end and add the character
+            1. If path is not present create a path
+            1. If character is already present after the path do nothing
+    1. Ukkonen's algorithm
+        1. Ukkonen's algrithm uses few tricks to improve on the O(n^3) algorithm
+        1. Trick 1
+            1. Skip/count - edge label compression
+            1. Instead of storing the actual character on the edge, store the index ranges on each edge
+            1. ![Trick 1](Images/trick1.jpg)
+        1. Trick 2
+            1. Rule 3 extension is a showstopper
+        1. Trick 3
+            1. Have global end for the leaves
+            1. So if a new element comes in we will just how to increment end by 1
+            1. ![Trick 3](Images/trick3.jpg)
+        1. Suffix Lenght
+            1. For every interval node V with path ta(t is single character and a is 0 or more characters) there is another internal node SV with a which is suffix link of V
