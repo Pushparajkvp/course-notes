@@ -444,5 +444,21 @@
             1. Have global end for the leaves
             1. So if a new element comes in we will just how to increment end by 1
             1. ![Trick 3](Images/trick3.jpg)
-        1. Suffix Lenght
+        1. Suffix Link
             1. For every interval node V with path ta(t is single character and a is 0 or more characters) there is another internal node SV with a which is suffix link of V
+            1. Every internal node will have a suffix link to another internal node or the root
+            1. It helps us traverse between the nodes quickly
+            1. When a new internal node is created during an extension and another node is created in the same phase then the new internal node is the suffix link of another node
+            1. ![Suffix Link](Images/suffixLink.jpg)
+        1. Active points
+            1. Rule 3 Extension
+                1. ![Active Point Rule 3 Extension](Images/activePointRule3.jpg)
+                1. Increment active length by one each time the traversing in the edge
+                1. Set active node to intermediate node if passing through intermediate node and set lenght to 1 and active edge to the index of the character
+            1. Rule 2 Extension
+                1. ![Active Point Rule 2 Extension](Images/activePointRule2.jpg)
+                1. Once an edge is added  and the active node is root, decrement active lenght and active edge by one and add edge till a node is added to root
+            1. Rule 1 Extension
+                1. ![Active Point Rule 1 Extension](Images/activePointRule4.jpg)
+                1. Once an edge is added and the active node is not root, add the same edge to all the suffix links of the intermediate node
+        1. 
