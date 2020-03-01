@@ -419,3 +419,54 @@
 1. A suffix tree for a given text is a compressed trie for all suffixes of the given text
 1. Standard Trie
     1. ![Standard Trie](Images/standardTrie.png)
+1. Compressed Trie
+    1. Compressed trie is obtained by joining the chains of single nodes
+    1. The nodes of the compressed trie can be stored by storing the index ranges at the nodes
+    1. ![Compressed Trie](Images/compressedTrie.png)
+1. Building a suffix tree
+    1. General steps to build a suffix tree
+        1. Generate all the suffixes of given text
+        1. Consider all suffix as individual word and generate a compressed trie
+    1. Example - bananana
+        1. All possible suffixes are
+            1. bananana\0
+            1. anana\0
+            1. nana\0
+            1. ana\0
+            1. na\0
+            1. a\0
+            1. \0
+        1. Standard Trie
+            1. ![bananana trie](Images/banananaTrie.png)
+        1. Compressed Trie
+            1. ![bananana compressed trie](Images/banananaCompressedTrie.png)
+1. Searching a pattern in suffix tree
+    1. Start from the first character of the pattern and root of the suffix tree, do the following for every character
+        1. For current character of the pattern, if there is an edge from the current node of suffix tree, follow the edge
+        1. If there is no edge, pattern is not found
+    1. If all characters of the pattern are processed, the pattern is found
+    1. ![Bananana Pattern Search](Images/banananaPatternSearch.png)
+1. How does this work?
+    1. Every pattern that is present in the text, must be a prefix of one of all possible suffix
+1. Applications of suffix tree
+    1. Pattern finding
+    1. Finding longest repeated substring
+    1. Finding longest palindrome in a string
+1. Ukkonen's suffix tree construction
+    1. A suffix tree T for m character string is a rooted directed tree with exactly m leaves numbered from 1 to m, provided that the last character is unique in the string
+    1. Root node can have zero, one or more children
+    1. Each intermediate node other than root must have at least 2 children
+    1. Each edge is labeled with non empty sub string of S
+    1. No two edge coming out of the same node can have edge label begining with the same character
+    1. TODO : Complete later
+
+## Balanced Binary Search Tree
+
+1. Intro
+    1. A Balanced Binary Search Tree(BBST) is a self-balancing binary search tree
+    1. This type of tree will adjust itself in order to maintain a low (logrithmic) height allowing for faster operations like insertion and deletion
+    1. The two things needed for balanced search tree implementations are **Tree Invariant** and **Tree Rotation**
+    1. ![Complexity Analysis](Images/bbstComplexity.jpg)
+1. Tree Rotations
+    1. Rotation is changing the arrangement of the elements in tree without breaking the tree invariant
+    1. ![Rotation Example](Images/rotationExample.jpg)
