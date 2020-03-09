@@ -470,3 +470,52 @@
 1. Tree Rotations
     1. Rotation is changing the arrangement of the elements in tree without breaking the tree invariant
     1. ![Rotation Example](Images/rotationExample.jpg)
+    1. Right Rotation
+        1. Algorithm for right rotation
+
+            ```algo
+            function rightRotate(A):
+                B := A.left
+                A.left := B.Right
+                B.right := A
+                return B
+            ```
+
+    1. Left Rotation
+        1. Algorithm for left rotation
+
+            ```algo
+            function leftRotation(A):
+                B := A.right
+                A.right := B.left
+                B.left := A
+                return B
+            ```
+
+1. AVL tree
+    1. Intro
+        1. AVL tree is one of many types of Balanced Binary Search Trees (BBST) which allows logarithmic O(logn) insertion, deletion and search operations
+        1. It was the first type of BBST
+        1. Other BBST examples are AA tree, scapegoat tree and red-black tree
+    1. AVL tree invariant
+        1. The property that keeps an AVL tree balanced is called Balancing Factor(BF)
+        1. BF(node) = H(node.right) - H(node.left)
+        1. Where H(node) is the number of edges from the node to the leaf node
+        1. The invariant in the AVL tree is that BF must be always -1, 0 or +1
+    1. Node in AVL tree
+        1. Node's balancing factor
+        1. Node's value
+        1. Height of the node
+        1. Pointers to left and right
+    1. Working
+        1. If the Balance Factor is not -1, 0 or +1 then it should be -2 or +2
+        1. To handle this case we use tree rotations
+        1. Cases
+            1. Left Left Case
+                1. ![AVL Left Left Case](Images/AVLLeftLeft.jpg)
+            1. Left Right Case
+                1. ![AVL Left Right Case](Images/AVLLeftRightCase.jpg)
+            1. Right Right Case
+                1. ![AVL Right Right Case](Images/AVLRightRightCase.jpg)
+            1. Right Left Case
+                1. ![AVL Right Left Case](Images/AVLRightLeftCase.jpg)
