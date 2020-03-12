@@ -519,3 +519,66 @@
                 1. ![AVL Right Right Case](Images/AVLRightRightCase.jpg)
             1. Right Left Case
                 1. ![AVL Right Left Case](Images/AVLRightLeftCase.jpg)
+    1. Deletion
+        1. Deletion in AVL tree is similar to deletion in a normal BST as it does not affect the AVL tree invariant
+1. Red-Black Tree
+    1. Intro
+        1. Time complexity of red black tree is similar to AVL tree but it has lesser rotations when compared to AVL tree
+        1. Number of rotations is less because the balancing factor is less restrictive
+        1. Java TreeMap and SortedMap use Red-Black Tree
+        1. Nodes of Red-Black tree are either Black or Red
+    1. Red-Black tree Invariant
+        1. Root is always black
+        1. No red-red parent child relation
+        1. Number of black nodes from root to nodes with less than 2 children is same
+    1. Insertion
+        1. Basic rules
+            1. If tree is empty create black root node
+            1. If tree is not empty insert new node as RED
+                1. If the parent is black no changes is needed
+                1. If the parent is red
+                    1. If siblings of parent is black or not present rotate and recolor
+                    1. If isblings of the parent is red then recolor
+            1. While inserting leaf nodes it must point to Black null node
+        1. Rotation
+            1. Left Left Case -> Right rotation
+            1. Right Left Case -> Left rotation and Right rotation
+            1. Right Right Case -> Left rotation
+            1. Left Right Case -> Right rotation and Left rotation
+        1. Recoloring
+            1. Swap the colors of old root and new root
+    1. Deletion
+        1. Find the node
+        1. Both child are not null
+            1. Find the Inorder successor of the node (smallest node in the right subtree or largest node in the left subtree)
+            1. Swap the node value with the value of succesor
+            1. Delete the succesor node
+        1. Both child are null
+            1. If the node is Red
+                1. Safely delete without any side effects
+            1. If the node is black
+                1. Delete and a **double black node** is created
+        1. One child is red and other is null
+            1. Replace the node with the red node without any side effects
+        1. Once child is black and other is null
+            1. Replace the node with the black node and create a **double black node**
+        1. Dealing with double black nodes
+            1. There are six cases for double black node
+            1. ![Double Black Node Cases](Images/doubleBlackNode.jpg)
+            1. Case 1, 4 and 6 are terminal cases and if that is reached we can stop
+            1. Cases
+                1. Case 1 : The double root node is the root of the tree
+                    1. We can leave is as such by coloring the root as black
+                1. Case 2 : Sibling is red
+                    1. Do a right rotation
+                1. Case 3 : Sibling is black and children of sibling is also black
+                    1. Change the color of the sibling to red
+                    1. Swap double black to the parent
+                1. Case 4 : Parent is red, siblings and children of siblings is black
+                    1. Swap color of parent and sibling
+                    1. Change double black to black
+                1. Case 5 : Sibling is black and left child of sibling is red
+                    1. Right rotate
+                    1. Swap color of left child and sibling
+                1. Case 6 : Sibling is black and right child of sibling is red
+                    1. Left rotation
