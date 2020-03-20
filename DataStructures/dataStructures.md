@@ -549,7 +549,10 @@
         1. Right Right Case -> Left rotation
         1. Left Right Case -> Right rotation and Left rotation
     1. Recoloring
-        1. Swap the colors of old root and new root
+        1. During balancing
+            1. Change parent red and uncle red to black and thier parent to Red and recurse.
+        1. After rotation
+            1. Swap the colors of old root and new root
 1. Deletion
     1. Find the node
     1. Both child are not null
