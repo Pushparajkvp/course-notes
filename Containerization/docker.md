@@ -67,3 +67,14 @@
         1. No container must be running off this image
     1. pull
         1. To only download the image and not run it
+
+## Run command
+
+1. Specifying a version for the image
+    1. We can speficy the version of a docker image by seperating the name and version with colon
+    1. This is called the TAG
+    1. Example : docker run redis:4.0
+1. Interactive mode
+    1. By default only stdout of the service is attached to the terminal
+    1. To enabble STDIN we must use -i command to enable interactive mode
+    1. Example : docker run -i redis:4.0
