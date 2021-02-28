@@ -199,7 +199,7 @@
       8. Initialization method
       9. Destruction method
    3. Naming bean
-       1. You are not required to supply a name or an id for a bean. If you do not supply a name or id explicitly, the container generates a unique name for that bean 
+       1. You are not required to supply a name or an id for a bean. If you do not supply a name or id explicitly, the container generates a unique name for that bean
        2. The convention is to use the standard Java convention for instance field names when naming beans. That is, bean names start with a lowercase letter and are camel-cased from there. Examples of such names include accountManager, accountService, userDao, loginController, and so forth.
    4. Aliasing a Bean outside the Bean Definition
 
@@ -269,84 +269,84 @@
       7. Determining a Bean’s Runtime Type
          1. The recommended way to find out about the actual runtime type of a particular bean is a BeanFactory.getType
 4. Dependencies
-         1. Dependency Injection
-             1. Constructor-based Dependency Injection
+   1. Dependency Injection
+      1. Constructor-based Dependency Injection
 
-                ```java
-                package x.y;
+            ```java
+            package x.y;
 
-                public class ThingOne {
+            public class ThingOne {
 
-                    public ThingOne(ThingTwo thingTwo, ThingThree thingThree) {
-                        // ...
-                    }
+                public ThingOne(ThingTwo thingTwo, ThingThree thingThree) {
+                    // ...
                 }
-                ```
+            }
+            ```
 
-                ```xml
-                <beans>
-                    <bean id="beanOne" class="x.y.ThingOne">
-                        <constructor-arg ref="beanTwo"/>
-                        <constructor-arg ref="beanThree"/>
-                    </bean>
+            ```xml
+            <beans>
+                <bean id="beanOne" class="x.y.ThingOne">
+                    <constructor-arg ref="beanTwo"/>
+                    <constructor-arg ref="beanThree"/>
+                </bean>
 
-                    <bean id="beanTwo" class="x.y.ThingTwo"/>
+                <bean id="beanTwo" class="x.y.ThingTwo"/>
 
-                    <bean id="beanThree" class="x.y.ThingThree"/>
-                </beans>
-                ```
+                <bean id="beanThree" class="x.y.ThingThree"/>
+            </beans>
+            ```
 
-                ```java
-                package examples;
+            ```java
+            package examples;
 
-                public class ExampleBean {
+            public class ExampleBean {
 
-                    // Number of years to calculate the Ultimate Answer
-                    private int years;
+                // Number of years to calculate the Ultimate Answer
+                private int years;
 
-                    // The Answer to Life, the Universe, and Everything
-                    private String ultimateAnswer;
+                // The Answer to Life, the Universe, and Everything
+                private String ultimateAnswer;
 
-                    public ExampleBean(int years, String ultimateAnswer) {
-                        this.years = years;
-                        this.ultimateAnswer = ultimateAnswer;
-                    }
+                public ExampleBean(int years, String ultimateAnswer) {
+                    this.years = years;
+                    this.ultimateAnswer = ultimateAnswer;
                 }
-                ```
+            }
+            ```
 
-                ```xml
-                <bean id="exampleBean" class="examples.ExampleBean">
-                    <constructor-arg type="int" value="7500000"/>
-                    <constructor-arg type="java.lang.String" value="42"/>
-                </bean>
-                <!-- constructor arg indexing-->
-                <bean id="exampleBean" class="examples.ExampleBean">
-                    <constructor-arg index="0" value="7500000"/>
-                    <constructor-arg index="1" value="42"/>
-                </bean>
-                <!-- constructor name based arg indexing -->
-                <bean id="exampleBean" class="examples.ExampleBean">
-                    <constructor-arg name="years" value="7500000"/>
-                    <constructor-arg name="ultimateAnswer" value="42"/>
-                </bean>
-                ```
+            ```xml
+            <bean id="exampleBean" class="examples.ExampleBean">
+                <constructor-arg type="int" value="7500000"/>
+                <constructor-arg type="java.lang.String" value="42"/>
+            </bean>
+            <!-- constructor arg indexing-->
+            <bean id="exampleBean" class="examples.ExampleBean">
+                <constructor-arg index="0" value="7500000"/>
+                <constructor-arg index="1" value="42"/>
+            </bean>
+            <!-- constructor name based arg indexing -->
+            <bean id="exampleBean" class="examples.ExampleBean">
+                <constructor-arg name="years" value="7500000"/>
+                <constructor-arg name="ultimateAnswer" value="42"/>
+            </bean>
+            ```
 
-                ```java
-                package examples;
+            ```java
+            package examples;
 
-                public class ExampleBean {
+            public class ExampleBean {
 
-                    // Annotation
+                // Annotation
 
-                    @ConstructorProperties({"years", "ultimateAnswer"})
-                    public ExampleBean(int years, String ultimateAnswer) {
-                        this.years = years;
-                        this.ultimateAnswer = ultimateAnswer;
-                    }
+                @ConstructorProperties({"years", "ultimateAnswer"})
+                public ExampleBean(int years, String ultimateAnswer) {
+                    this.years = years;
+                    this.ultimateAnswer = ultimateAnswer;
                 }
-                ```
+            }
+            ```
 
-         2. Setter based dependency injection
+         1. Setter based dependency injection
 
             ```java
             public class ExampleBean {
@@ -386,7 +386,7 @@
             <bean id="yetAnotherBean" class="examples.YetAnotherBean"/>
             ```
 
-   1. Dependencies and Configuration in Detail
+   2. Dependencies and Configuration in Detail
       1. Straight values
 
             ```xml
@@ -745,7 +745,7 @@
 8. Customizing IoC
    1. Spring's IoC implementation using context can be customized by extending the ApplicationContext and overriding the methods
 9. Annotation-based Container Configuration
-   1. Are annotations better than XML for configuring Spring?
+   2. Are annotations better than XML for configuring Spring?
       1. “it depends.”
       2. Due to the way they are defined, annotations provide a lot of context in their declaration, leading to shorter and more concise configuration
       3. However, XML excels at wiring up components without touching their source code or recompiling them.
