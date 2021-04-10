@@ -101,7 +101,7 @@ Go step by step through the different components and concepts involved in archit
       1. Often the developers use a server to render the user interface on the backend & then send the rendered data to the client.
 6. Communication Between the Client & the Server
    1. Request-Response Model
-      1. The client & the server have a request-response model. 
+      1. The client & the server have a request-response model.
       2. If there is no request, there is no response. Pretty simple right?
    2. HTTP Protocol
       1. HTTP protocol is a request-response protocol that defines how information is transmitted across the web.
@@ -133,7 +133,7 @@ Go step by step through the different components and concepts involved in archit
    3. It encapsulates the business logic.
    4. taking care of the authorization, authentication, sanitizing the input data & other necessary tasks before providing access to the application resources.
 9. modes of data transfer
-   1.  ![HTTP PULL vs HTTP PUSH](images/HTTPPullPush.jpg)
+   1. ![HTTP PULL vs HTTP PUSH](images/HTTPPullPush.jpg)
    2. HTTP PULL
       1. The client sends the request & the server responds with the data.
       2. This is the default mode
@@ -225,3 +225,107 @@ Go step by step through the different components and concepts involved in archit
        3. A big downside to this is once the number of concurrent users on the website rises, it puts an unnecessary load on the server.
        4. Client-side rendering works best for modern dynamic Ajax-based websites.
        5. We can use server-side rendering for the home page & for the other static content on our website & use client-side rendering for the dynamic pages.
+
+## Scalability
+
+1. What?
+   1. Scalability means the ability of the application to handle & withstand increased workload without sacrificing the latency.
+   2. For instance, if your app takes x seconds to respond to a user request. It should take the same x seconds to respond to each of the million concurrent user requests on your app.
+   3. ![Scalability](images/Scalability.jpg)
+   4. Latency
+      1. Latency is the amount of time a system takes to respond to a user request
+      2. No matter how much the traffic load on a system builds up, the latency should not go up. This is what scalability is.
+   5. Measuring Latency
+      1. Latency is measured as the time difference between the action that the user takes on the website, it can be an event like the click of a button, & the system response in reaction to that event.
+      2. Divisons
+         1. ![Latency](images/Latency.jpg)
+         2. Network Latency
+            1. Network Latency is the amount of time that the network takes for sending a data packet from point A to point B.
+            2. To cut down the network latency, businesses use CDN & try to deploy their servers across the globe as close to the end-user as possible.
+         3. Application Latency
+            1. Application Latency is the amount of time the application takes to process a user request.
+2. Types
+   1. Two types
+      1. Vertical
+      2. Horizontal
+   2. Vertical Scaling
+      1. Vertical scaling means adding more power to your server.
+      2. Ideally, when the traffic starts to build upon your app the first step should be to scale vertically. Vertical scaling is also called scaling up.
+      3. doesn’t require any code refactoring
+      4. There is a limit to the capacity we can augment for a single server.
+   3. Horizontal Scaling
+      1. Horizontal scaling, also known as scaling out, means adding more hardware to the existing hardware resource pool.
+      2. This increases the computational power of the system as a whole.
+      3. there is literally no limit to how much we can scale horizontally
+   4. Cloud Elasticity
+      1. ability to scale up & down dynamically.
+      2. If the site has a heavy traffic influx more server nodes get added & when it doesn’t the dynamically added nodes are removed.
+      3. Having multiple server nodes on the backend also helps with the website staying alive online all the time even if a few server nodes crash. This is known as High Availability
+3. Which is suitable for app?
+   1. Vertical Scaling
+      1. pros
+         1. Vertical scaling for obvious reasons is simpler in comparison to scaling horizontally as we do not have to touch the code or make any complex distributed system configurations.
+         2. It takes much less administrative, monitoring, management efforts as opposed to when managing a distributed environment.
+      2. Cons
+         1. Availability risk
+         2. The servers are powerful but few in number, there is always a risk of them going down
+   2. Code change
+      1. If you need to run the code in a distributed environment, it needs to be stateless.
+      2. No static instances in the class. Static instances hold application data & if a particular server goes down all the static data/state is lost. The app is left in an inconsistent state.
+      3. Rather, use a persistent memory like a key-value store to hold the data & to remove all the state/static variable from the class.
+      4. This is why functional programming got so popular with distributed systems.
+      5. The functions don’t retain any state.
+      6. Microservices are adopted these days to scale horizontally
+      7. ![Microservices](images/MicroService.jpg)
+   3. Which is suitable
+      1. If your app is a utility or a tool which is expected to receive minimal consistent traffic, it may not be mission-critical. For instance, an internal tool of an organization or something similar.
+      2. A single server is enough to manage the traffic, go ahead with vertical scaling when you know that the traffic load would not increase significantly.
+      3. If your app is a public-facing social app like a social network, a fitness app or something similar, then the traffic is expected to spike exponentially in the near future. Both high availability & horizontal scalability is important to you.
+4. Primary Bottlenecks that Hurt the Scalability Of Our Application
+   1. Database
+      1. Just like the workload scalability, the database needs to be scaled well.
+      2. Make wise use of database partitioning, sharding, use multiple database servers to make the module efficient.
+   2. Application Architecture
+      1. A common architectural mistake is not using asynchronous processes & modules where ever required rather all the processes are scheduled sequentially.
+      2. For instance, if a user uploads a document on the portal, tasks such as sending a confirmation email to the user, sending a notification to all of the subscribers/listeners to the upload event should be done asynchronously.
+      3. These tasks should be forwarded to a messaging server as opposed to doing it all sequentially & making the user wait for everything.
+   3. Not Using Caching In the Application Wisely
+      1. Caching can be deployed at several layers of the application & it speeds up the response time by notches.
+      2. Use caching exhaustively throughout the application to speed up things significantly.
+   4. Inefficient Configuration & Setup of Load Balancers
+      1. Load balancers are the gateway to our application.
+      2. Using too many or too few of them impacts the latency of our application.
+   5. Adding Business Logic to the Database
+      1. Not only it makes the whole application tightly coupled. It puts unnecessary load on it.
+      2. Imagine when migrating to a different database, how much code refactoring it would require.
+   6. Not Picking the Right Database
+      1. Need transactions & strong consistency? Pick a Relational Database
+      2. If you can do without strong consistency rather need horizontal scalability on the fly pick a NoSQL database.
+   7. At the Code Level
+      1. Using unnecessary loops, nested loops.
+      2. Writing tightly coupled code
+      3. Not paying attention to the Big-O complexity while writing the code.
+5. How To Improve & Test the Scalability Of Our Application?
+   1. Tuning The Performance Of The Application – Enabling It To Scale Better
+      1. Profiling
+         1. Run application profiler, code profiler.
+         2. See which processes are taking too long, eating up too much resources. Find out the bottlenecks. Get rid of them.
+         3. Profiling is the dynamic analysis of our code.
+      2. Caching
+         1. Cache wisely. Cache everywhere. Cache all the static content
+         2. Hit the database only when it is really required.
+         3. Try to serve all the read requests from the cache.
+         4. Use a write-through cache.
+      3. CDN
+         1. Using a CDN further reduces the latency of the application due to the proximity of the data from the requesting user.
+      4. Data Compression
+         1. Store data in the compressed form.
+         2. Transfer data in compressed form.
+      5. Avoid Unnecessary Client Server Requests
+         1. Try to club multiple requests into one.
+   2. Testing the Scalability Of Our Application
+      1. Once we are done with the basic performance testing of the application, it is time for capacity planning, provisioning the right amount of hardware & computing power.
+      2. Different services & components need to be tested both individually and collectively.
+      3. CPU usage, network bandwidth consumption, throughput, the number of requests processed within a stipulated time, latency, memory usage of the program, end-user experience when the system is under heavy load etc.
+      4. As per the anticipated traffic, appropriate hardware & the computational power is provisioned to handle the traffic smoothly with some buffer.
+      5. Several load & stress tests are run on the application.
