@@ -329,3 +329,74 @@ Go step by step through the different components and concepts involved in archit
       3. CPU usage, network bandwidth consumption, throughput, the number of requests processed within a stipulated time, latency, memory usage of the program, end-user experience when the system is under heavy load etc.
       4. As per the anticipated traffic, appropriate hardware & the computational power is provisioned to handle the traffic smoothly with some buffer.
       5. Several load & stress tests are run on the application.
+
+## High Availability
+
+1. What?
+   1. High availability also known as HA is the ability of the system to stay online despite having failures at the infrastructural level in real-time.
+   2. HA is often expressed as a percentage.
+   3. You might often see this in the SLA (Service Level Agreements) of cloud platforms.
+   4. How Important Is High Availability To Online Services?
+      1. mission-critical systems like aircraft systems, spacecrafts, mining machines, hospital servers, finance stock market systems that just cannot afford to go down at any time.
+2. Reasons For System Failures
+   1. Software Crashes
+      1. Corrupt software files.
+      2. BSOD
+      3. OS crashing, memory-hogging unresponsive processes
+      4. software running on cloud nodes crash unpredictably, along with it they take down the entire node.
+   2. Hardware Failures
+      1. Overloaded CPU
+      2. RAM, hard disk failures
+      3. nodes going down.
+      4. Network outages.
+   3. Human Errors
+      1. This is the biggest reason for system failures. Flawed configurations & stuff.
+   4. Planned Downtime
+      1. outine maintenance operations, patching of software, hardware upgrades etc.
+      2. These are the primary reasons for system failures
+3. Achieving High Availability - Fault Tolerance
+   1. what?
+      1. Fault tolerance is the ability of the system to stay up despite taking hits.
+      2. In case of these internal failures, the system could work at a reduced level but it will not go down entirely.
+      3. A few services of the app such as image upload, post likes etc. may stop working. But the application as a whole will still be up. This approach is also technically known as Fail Soft.
+   2. Designing A Highly Available Fault-Tolerant Service – Architecture
+      1. To achieve high availability at the application level, the entire massive service is architecturally broken down into smaller loosely coupled services called the micro-services.
+      2. Advantages
+         1. Easier management
+         2. Easier developmen
+         3. Ease of adding new features
+         4. Ease of maintenance
+         5. High availability
+      3. Every microservice takes the onus of running different features of an application such as image upload, comment, instant messaging etc.
+      4. So, even if a few services go down the application as a whole is still up.
+   3. Redundancy
+      1. Active-Passive HA Mode
+         1. Redundancy is duplicating the components or instances & keeping them on standby to take over in case the active instances go down. It’s the fail-safe, backup mechanism.
+         2. ![HA](images/HA.jpg)
+         3. An initial set of nodes are active & a set of redundant nodes are passive, on standby. Active nodes get replaced by passive nodes, in case of failures.
+      2. Getting Rid Of Single Points Of Failure
+         1. A large number of distributed nodes work in conjunction with each other to achieve a single synchronous application state.
+         2. When so many redundant nodes are deployed, there are no single points of failure in the system.
+      3. Monitoring & Automation
+         1. Systems should be well monitored in real-time to detect any bottlenecks or single point of failures.
+         2. Automation enables the instances to self-recover without any human intervention. It gives the instances the power of self-healing.
+         3. Also, the systems become intelligent enough to add or remove instances on the fly as per the requirements.
+   4. Replication
+      1. Active-Active HA Mode
+         1. This approach is also known as the Active-Active High Availability mode. In this approach, all the components of the system are active at any point in time.
+         2. ![Active Active HA mode](images/Active-ActiveHA.jpg)
+      2. Geographical Distribution of Workload
+         1. This avoids the single point of failure thing in context to a data centre.
+         2. Also, the latency is reduced by quite an extent due to the proximity of data to the user.
+         3. Businesses often use multi-cloud platforms to deploy their workloads which ensures further availability. If things go south with one cloud provider, they have another to fail back over.
+   5. High Availability Clustering
+      1. A High Availability cluster also known as the Fail-Over cluster contains a set of nodes running in conjunction with each other that ensures high availability of the service.
+      2. The nodes in the cluster are connected by a private network called the Heartbeat network that continuously monitors the health and the status of each node in the cluster.
+      3. A single state across all the nodes in a cluster is achieved with the help of a shared distributed memory & a distributed co-ordination service like the Zookeeper.
+      4. ![HA clustering](images/HAClustering.jpg)
+      5. techniques
+         1. Disk mirroring
+         2. RAID Redundant Array Of Independent Disks
+         3. redundant network connections
+         4. redundant electrical power
+      6. Multiple HA clusters run together in one geographical zone ensuring minimum downtime & continual service.
