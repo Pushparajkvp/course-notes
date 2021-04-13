@@ -400,3 +400,108 @@ Go step by step through the different components and concepts involved in archit
          3. redundant network connections
          4. redundant electrical power
       6. Multiple HA clusters run together in one geographical zone ensuring minimum downtime & continual service.
+
+## Load balancers
+
+1. Intro
+   1. What?
+      1. Load balancers distribute heavy traffic load across the servers running in the cluster based on several different algorithms.
+      2. Amidst processing a user request if a server goes down, the load balancer automatically routes the future requests to other up and running servers in the cluster thus enabling the service as a whole to stay available.
+      3. Load balancers act as a single point of contact for all the client requests.
+      4. efficiently manage traffic directed towards any component of the application be it the backend application server, database component, message queue or any other.
+   2. Performing Health Checks Of The Servers With Load Balancers
+      1. Load balancers regularly perform health checks of the machines in the cluster.
+      2. maintains a list of machines that are up and running in the cluster in real-time
+      3. in-service Nodes
+      4. out of service Nodes
+2. Understanding DNS (Domain name system)
+   1. What?
+      1. DNS is a system that averts the need to remember long IP addresses to visit a website by mapping easy to remember domain names to IP addresses.
+   2. Components
+      1. DNS querying is the process of resolving the domain name
+      2. components
+         1. DNS Recursive Nameserver aka DNS Resolver
+         2. Root Nameserver
+         3. Top-Level Domain Nameserver
+         4. Authoritative Nameserver
+      3. ![Components](images/DNSComponents.jpg)
+   3. Flow
+      1. ![Flow](images/DNSResolving.jpg)
+      2. user hits enter after typing in the domain name
+      3. the browser sends a request to the DNS Recursive nameserver which is also known as the DNS Resolver.
+      4. DNS resolver receive the client request and forward it to the Root nameserver to get the address of the Top-Level domain nameserver.
+         1. DNS Recursive nameserver is generally managed by our ISP Internet service provider.
+         2. The whole DNS system is a distributed system setup in large data centers managed by internet service providers.
+         3. These data centers contain clusters of servers that are optimized to process DNS queries in minimal time that is in milliseconds.
+      5. The Root nameserver returns the address of the Top-Level domain nameserver in response.
+         1. As an example, the top-level domain for amazon.com is .com.
+      6. Once the DNS Resolver receives the address of the top-level domain nameserver, it sends a request to it to fetch the details of the domain name.
+         1. Top level domain nameservers hold the data for domains using their top-level domains.
+         2. For instance, .com top-level domain nameserver will contain information on domains using .com.
+      7. Once the top-level domain name server receives the request from the Resolver, it returns the IP address of amazon.com domain name server.
+         1. amazon.com domain name server is the last server in the DNS query lookup process.
+         2. It is the nameserver responsible for the amazon.com domain & is also known as the Authoritative nameserver
+         3. This nameserver is owned by the owner of the domain name.
+      8. DNS Resolver then fires a query to the authoritative nameserver & it then returns the IP address of amazon.com website to the DNS Resolver.
+      9. DNS Resolver caches the data and forwards it to the client.
+      10. On receiving the response, the browser sends a request to the IP address of the amazon.com website to fetch data from their servers.
+      11. DNS information of websites that we visit also gets cached in our local machines
+3. DNS load balancing
+   1. What?
+      1. DNS load balancing is implemented at autorative name server
+      2. the authoritative server changes the order of the IP addresses in the list in a round-robin fashion.
+      3. List of IPs is sent because if one ip failes client can try another IP
+      4. it re-orders the list and puts another IP address on the top of the list following the round-robin algorithm.
+      5. Also, when the client hits an IP it may not necessarily hit an application server, it may hit another load balancer implemented at the data center level that manages the clusters of application servers.
+   2. Pros and cons
+      1. Pros
+         1. easy and less expensive
+         2. distribute traffic across multiple data centers that the application runs in.
+      2. Cons
+         1. doesn’t take into account the existing load on the servers, the content they hold, their request processing time, their in-service status and so on.
+         2. caching in client side causes request to land on machines that down
+4. Load balancing methods
+   1. Three modes
+      1. DNS Load Balancing
+      2. Hardware-based Load Balancing
+      3. Software-based Load Balancing
+   2. Hardware Load Balancers
+      1. Pros
+         1. highly performant physical hardware
+         2. primarily picked because of their top-notch performance.
+      2. Cons
+         1. they need maintenance & regular updates
+         2. expensive to setup in comparison to software load balancers and their upkeep may require a certain skill set.
+         3. developers prefer working with software load balancers.
+         4. have to overprovision them to deal with the peak traffic
+   3. Software Load Balancers
+      1. Pros
+         1. can be installed on commodity hardware and VMs.
+         2. cost-effective
+         3. flexibility to the developers
+         4. can be upgraded and provisioned easily
+         5. LBaaS Load Balancers as a Service services -> no setup
+         6. they consider many parameters such as content that the servers host, cookies, HTTP headers, CPU & memory utilization, load on the network & so on to route traffic across the servers.
+         7. continually perform health checks on the servers
+         8. Development teams prefer to work with software load balancers
+         9. HAProxy is one example of a software load balancer
+   4. Algorithms/Traffic Routing Approaches Leveraged By Load Balancers
+      1. Round Robin & Weighted Round Robin
+         1. Parameters such as load on the servers, their CPU consumption and so on are not taken into account when sending the IP addresses to the clients.
+         2. Weighted Round Robin where based on the server’s compute & traffic handling capacity weights are assigned to them. And then based on the server weights, traffic is routed to them using the Round Robin algorithm.
+         3. More traffic can be directed to the larger data centers containing more machines.
+      2. Least Connections
+         1. Normal approach
+            1. it is assumed that all the requests will consume an equal amount of server resources
+            2. there is a possibility that the machine having the least open connections might be already processing requests demanding most of its CPU power.
+         2. Efficient approach
+            1. the CPU utilization & the request processing time of the chosen machine is also taken into account before routing the traffic to it.
+         3. used in persistent connections in a gaming application.
+      3. Random
+         1. the traffic is randomly routed to the servers
+      4. Hash
+         1. The source IP and request URL are hashed
+         2. It ensures that request from same ip will always land on same machine
+         3. Server would have cached requests for that user
+         4. Reduces rtt of the request
+         5. Re-establish connection with the same server incase of connection drops
