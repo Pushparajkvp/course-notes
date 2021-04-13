@@ -505,3 +505,84 @@ Go step by step through the different components and concepts involved in archit
          3. Server would have cached requests for that user
          4. Reduces rtt of the request
          5. Re-establish connection with the same server incase of connection drops
+
+## Monolith & Microservices
+
+1. What is Monolith?
+   1. ![Monolith](images/Monolith.jpg)
+   2. self-contained, single-tiered software application
+   3. different modules are responsible for running respective tasks
+   4. Layers
+      1. ![Layers](images/MonolithLayers.jpg)
+   5. Stripping down things in a tightly coupled architecture & re-writing stuff demands a lot of resources & time.
+2. When Monolith?
+   1. Pros
+      1. Simplicity
+      2. Easy monitoring
+   2. Cons
+      1. Continuous Deployment -> needs downtown of whole system
+      2. Regression Testing -> need full testing for each deployment
+      3. Single Points Of Failure
+      4. Scalability Issues
+      5. Cannot Leverage Heterogeneous Technologies
+      6. Not Cloud-Ready, Hold State -> holds state in static variables
+   3. When?
+      1. requirements are pretty simple
+      2. won’t be an exponential growth
+3. What is Micorservices?
+   1. In a microservices architecture, different features/tasks are split into separate respective modules/codebases which work in conjunction with each other forming a large service as a whole.
+   2. Single Responsibility & the Separation of Concerns principles are applied
+   3. easier & cleaner app maintenance, feature development, testing & deployment
+   4. To scale, we need to split things up
+   5. Every service ideally has a separate database, there are no single points of failure & system bottlenecks.
+   6. ![Microservices](images/MicroService.jpg)
+4. When Microservice?
+   1. Pros
+      1. Leverage the Heterogeneous Technologies
+         1. interacts with each other via a REST API Gateway interface.
+         2. Polyglot persistence -> multiple databases types like SQL, NoSQL together in an architecture
+      2. Independent & Continuous Deployments
+   2. Cons
+      1. Complexities In Management
+         1. Managing & monitoring them gets complex.
+         2. Additional components needed like Apache Zookeeper, a distributed tracing service for monitoring the nodes etc.
+         3. more skilled resources
+      2. No Strong Consistency
+         1. Things are Eventually consistent across the nodes.
+         2. this limitation is due to the distributed design.
+   3. When?
+      1. complex use cases
+      2. expect traffic to increase exponentially in future
+      3. A typical social networking application has various components such as messaging, real-time chat, LIVE video streaming, image uploads, Like, Share feature etc.
+5. Stratergies to go with
+   1. pick a monolith
+   2. pick a microservice
+   3. pick monolith and later scale into microservice
+6. Tradeoffs
+   1. Fault Isolation
+      1. microservices
+         1. easy for us to isolate faults and debug them
+         2. fix issues on that perticular microservice
+   2. Development Team Autonomy
+      1. Monolith
+         1. as the size of the codebase increases, the compile-time & the time required to run the tests increases too.
+         2. Code change made by any other team will directly impact the feature we develop
+         3. Thorough regression testing is required
+         4. Code pushed might require approval from other teams
+      2. Microservice
+         1. separate teams have complete ownership of their codebases.
+         2. complete development and deployment autonomy over their modules
+         3. Code management becomes easier
+         4. It becomes easier to scale individual services
+         5. launch a lot of features quick
+         6. Distributed logging, monitoring, inter-service communication, service discovery, alerts, tracing, build & release pipelines, health checks & so on.
+   3. Segment - case study -> from monolith to microservice to monolith
+      1. Monolith
+         1. ![Monolith segment](images/MonolithSegment.jpg)
+         2. Segment’s data infrastructure ingests hundreds of thousands of events per second.
+         3. These events are then directed to different APIs & webhooks via a message queue.
+      2. Microservice
+         1. ![Microservice segment](images/MicroserviceSegment.jpg)
+         2. Every destination had a separate microservice and a queue.
+         3. Auto-scaling was implemented in the infrastructure but every service had distinct CPU & memory requirements.
+         4. This needed manual tuning of the infrastructure. This meant - more queues needed more resources for maintenance.
