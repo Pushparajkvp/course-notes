@@ -827,3 +827,76 @@ Go step by step through the different components and concepts involved in archit
     3. When?
        1. grapple with Big data, to ingest it or to run analytics on it
        2. manage big data ensuring scalability, performance & high availability at the same time.
+
+## Caching
+
+1. Intro
+   1. What?
+      1. simply means copying frequently accessed data from the database which is disk-based hardware and storing it in RAM Random Access Memory hardware.
+      2. It ensures low latency and high throughput.
+      3. it returns the response in less time
+   2. Caching Dynamic Data
+      1. it has an expiry time or a TTL “Time To Live”.
+      2. After the TTL ends, the data is purged from the cache and the newly updated data is stored in it. This process is known as Cache Invalidation.
+   3. Caching Static Data
+      1. images, font files, CSS & other similar files.
+      2. cached on the client-side in the browser or their local memory.
+      3. on the CDNs the Content Delivery Networks.
+   4. helps applications maintain their expected behaviour during network interruptions.
+2. When and where?
+   1. When?
+      1. it’s always a good idea to use a cache
+      2. used at any layer of the application
+      3. common usage of caching is database caching.
+   2. Where?
+      1. client browser to cache static data.
+      2. database
+      3. We can always cache the frequently accessed content on our website
+      4. user sessions in a cache.
+      5. OS level
+      6. at the network level
+      7. CDN
+      8. Key-Value store
+      9. cross-module communication in a microservices architecture by saving the shared data
+      10. DB writes can be batched using cache
+3. Caching Strategies
+   1. Cache Aside
+      1. The data is lazy-loaded in the cache.
+      2. Flow
+         1. User requests
+         2. Look into cache
+         3. if present return
+         4. or hit db and add in cache
+         5. Item deleted from cache after TTL
+      3. When?
+         1. Read heavy system
+         2. rare updates
+   2. Read-Through
+      1. cache always stays consistent with the database.
+      2. Flow
+         1. User requests
+         2. Look into cache
+         3. if present return
+         4. or hit db and update cache
+         5. Cache service syncs writes to db and cache
+         6. Item deleted from ache after TTL
+      3. When?
+         1. When we want consistent cache
+   3. Write-Through
+      1. each & every information written to the database goes through the cache.
+      2. Flow
+         1. User writes data
+         2. It updates cache
+         3. writes to db
+      3. When?
+         1. Write heavy systems
+         2. games
+   4. Write-Back
+      1. Cache updated and later writtern to DB
+      2. Flow
+         1. User writes data
+         2. Updated in cache
+         3. after some time updated in DB
+      3. When?
+         1. Write heavy system
+         2. It might loose consistency when cache dies before updating db
