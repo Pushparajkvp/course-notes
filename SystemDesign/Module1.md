@@ -586,3 +586,23 @@ Go step by step through the different components and concepts involved in archit
          2. Every destination had a separate microservice and a queue.
          3. Auto-scaling was implemented in the infrastructure but every service had distinct CPU & memory requirements.
          4. This needed manual tuning of the infrastructure. This meant - more queues needed more resources for maintenance.
+
+## Micro Frontends
+
+1. Intro
+   1. Micro frontends are separate loosely coupled components of the user interface of an application that are developed applying the principles of microservices on the front end.
+   2. loosely coupled
+   3. fault isolation
+   4. freedom to pick the desired technology stack
+   5. ![Monolith frontend](images/MonolithFrontend.jpg)
+   6. ![Micro frontend](images/MicroFrontend.jpg)
+2. Need
+   1. Easier Co-ordination With The Front End Devs
+   2. Leveraging The Right Technology
+3. Micro Frontends Integration
+   1. Client-Side Integration Of Micro Frontends
+      1. integrating components on the client is having micro frontends with unique links.
+      2. he micro frontends that need to be integrated within a specific page can be done using Iframes.
+   2. Server-Side Integration
+      1. on the user request the complete pre-built page of the website is delivered to the client from the server
+      2. This cuts down the loading time of the website on the client significantly since the browser does not have to do any sort of heavy lifting.
