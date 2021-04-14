@@ -606,3 +606,224 @@ Go step by step through the different components and concepts involved in archit
    2. Server-Side Integration
       1. on the user request the complete pre-built page of the website is delivered to the client from the server
       2. This cuts down the loading time of the website on the client significantly since the browser does not have to do any sort of heavy lifting.
+
+## Database
+
+1. Introduction & Types of Data
+   1. What is database?
+      1. a component required to persist data
+      2. many forms: structured, unstructured, semi-structured and user state data.
+   2. Structured Data
+      1. typically stored in a database in a normalized fashion.
+      2. Direct interaction can be done with this kind of data.
+      3. generally managed by a query language such as SQL (Structured query language).
+   3. Unstructured Data
+      1. no definite structure.
+      2. comprising of text, image files, video, multimedia files, pdfs, Blob objects, word documents, machine-generated data etc.
+      3. often encountered in data analytics.
+      4. data streams in from multiple sources such as IoT devices, social networks, web portals, industry sensors etc. into the analytics systems.
+      5. cannot just directly process unstructured data.
+      6. Data prep is needed
+   4. Semi-structured Data
+      1. mix of structured & unstructured data.
+      2. often stored in data transport formats such as XML or JSON and is handled as per the business requirements.
+   5. User state
+      1. information of activity which the user performs on the website.
+      2. next time, when the user logs in, he can continue from where he left off.
+      3. Improves user experience
+2. Relational Database
+   1. What?
+      1. A relational database saves data containing relationships.
+      2. One to One, One to Many, Many to Many, Many to One etc.
+   2. What Are Relationships?
+      1. One-to-One
+      2. One-to-Many
+      3. Many-to-Many
+      4. Parent Tables and Child Tables
+   3. Data Consistency
+      1. normalization
+      2. simplest and atomic form and is not spread throughout the database
+      3. if we want to update the data, we just update at that one place and every fetch operation gets the updated data.
+   4. ACID Transactions
+      1. ACID
+         1. Atomicity
+         2. Consistency
+         3. Isolation
+         4. Durability
+            1. Transaction states before and after are consistent and durable
+   5. When?
+      1. Transactions & Data Consistency
+         1. money or numbers, that makes transactions, ACID, data consistency super important to you.
+         2. shine when it comes to transactions & data consistency.
+      2. Storing Relationships
+3. NoSQL Databases
+   1. What?
+      1. more like JSON-based databases
+      2. built for high frequency read & writes
+   2. Differences
+      1. Scalability
+         1. RDBMS
+            1. Scaling relational databases is something which is not trivial
+            2. They have to be Sharded or Replicated to make them run smoothly on a cluster.
+         2. NoSQL
+            1. ability to add new server nodes on the fly & continue
+      2. Clustering
+         1. designed to run intelligently on clusters.
+         2. server nodes even have self-healing capabilities
+         3. sacrifice Strong consistency, ACID Transactions & much more to scale horizontally over a cluster & across the data centres.
+         4. Eventually Consistent
+   3. Features
+      1. Pros
+         1. Gentle Learning Curv
+         2. Schemaless
+      2. Cons
+         1. Inconsistency
+         2. No Support For ACID Transactions
+   4. When?
+      1. Handling A Large Number Of Read Write Operations
+         1. large amount of data
+         2. Frequent read/writes
+      2. Flexibility With Data Modeling
+      3. Eventual Consistency Over Strong Consistency
+         1. we do not require transactions.
+         2. When a large application is deployed on hundreds of servers spread across the globe, the geographically distributed nodes take some time to reach a global consensus. (Eventual Consistency)
+      4. Running Data Analytics
+         1. data analytics use cases
+         2. influx of massive amounts of data.
+   5. Performance
+      1. NoSQL and RDBMS have similar performant from benchmarks
+      2. Performance entirely depends on the application & the database design.
+         1. Using more joins in SQL
+         2. Removing all joins and relationships, SQL will become NoSQL
+      3. A well-designed SQL data store will always be more performant than a not so well-designed NoSQL store.
+4. Polyglot Persistence
+   1. What?
+      1. Polyglot persistence means using several different persistence technologies to fulfil different persistence requirements in an application.
+   2. Facebook  use case
+      1. ![Polyglot persistence](images/PolyglotPersistence.jpg)
+      2. RDBMS to to persist relationships (mysql)
+      3. Key Value store to cache (memcache)
+      4. Wide Column db for analytics (cassandra)
+      5. RDBMS for transactions (mysql)
+      6. Graph DB for recommendations (GraphQL)
+      7. Document Oriented Store for scalable search (ElasticSearch)
+   3. Downside is complexity alone
+5. Multi-Model Databases
+   1. What?
+      1. ![Multi model database](images/MultiModel.jpg)
+      2. ability to use different data models in a single database system.
+      3. Multi-model databases support multiple data models like Graph, Document-Oriented, Relational etc. as opposed to supporting only one data model.
+   2. Arango DB, Cosmos DB, Orient DB, Couchbase etc.
+6. Eventual Consistency
+   1. What?
+      1. The consistency is maintained over time
+   2. enables the data store to be highly available.
+   3. optimistic replication
+   4. Use case
+      1. Update like counter in blogging site, request from japan and other countries
+      2. ![Eventual Consistency](images/EventualConsistency.jpg)
+      3. All the nodes in different geographic zones have different post values. And they will take some time to reach a consensus.
+7. Strong Consistency
+   1. What?
+      1. Strong Consistency simply means the data has to be strongly consistent at all times.
+      2. only way to implement this behaviour is by locking down the nodes when being updated.
+   2. Use Case
+      1. Lock the node until update is propagated to all nodes
+      2. ![Strong Consistency](images/StrongConsistency.jpg)
+      3. Used in stock market trading apps
+   3. picking the Strong Consistency model hits the capability of the system to be Highly Available.
+   4. ACID Transaction Support
+      1. NoSQL databases don’t support ACID transactions
+      2. transaction support is limited to a geographic zone
+      3. Developers of the tech make sure that all the Strongly consistency entity nodes reside in the same geographic zone to make the ACID transactions possible.
+8. CAP Theorem
+   1. CAP stands for Consistency, Availability, Partition Tolerance.
+   2. Partition Tolerance means Fault Tolerance.The system is tolerant of failures or partitions. It keeps working even if a few nodes go down.
+   3. amongst the three, Consistency, Availability & the Partition Tolerance, we have to pick two.
+   4. CAP theorem simply states that in case of a network failure, when a few of the nodes of the system are down, we have to make a choice between Availability & Consistency
+   5. If we pick Availability that means when a few nodes go down, the other nodes are available to the users for making updates.
+   6. If we pick Consistency, in that scenario, we have to lock down all the nodes for further writes until the nodes which have gone down come back online
+   7. depends on our use case and the business requirements.
+   8. Nodes, spread around the globe, will take some time to reach a consensus.
+9. Types of Databases
+   1. Types
+      1. Document-Oriented database
+      2. Key-value datastore
+      3. Wide-column database
+      4. Relational database
+      5. Graph database
+      6. Time-Series database
+      7. Databases dedicated to mobile apps
+10. Document Oriented Database
+    1. What?
+       1. They store data in a document-oriented model in independent documents.
+       2. The data is generally semi-structured & stored in a JSON-like format.
+    2. MongoDB, CouchDB, OrientDB, Google Cloud Datastore, Amazon Document DB
+    3. When?
+       1. need a flexible schema which would change often
+       2. possibility that things might change over time.
+       3. there isn’t much relational logic involved & all we need is just quick persistence & retrieval of data.
+       4. Typical usecases
+          1. Real-time feeds
+          2. Live sports apps
+          3. Writing product catalogues
+          4. Inventory management
+          5. Storing user comments
+          6. Web-based multiplayer games
+11. Graph Database
+    1. What?
+       1. They store data in nodes/vertices and edges in the form of relationships.
+       2. ![Graph DB](images/GraphDB.jpg)
+       3. Each Node in a graph database represents an entity.
+    2. Features Of A Graph Database
+       1. visualization
+       2. low latency
+       3. faster as the relationships in them are not calculated at the query time
+    3. When?
+       1. social, knowledge, network graphs.
+       2. AI-based apps, recommendation engines, fraud analysis app, storing genetic data etc.
+    4. Neo4J is standard
+12. Key Value Database
+    1. What?
+       1. These databases use a simple key-value method to store and quickly fetch the data with minimum latency.
+    2. Features
+       1. caching
+       2. Key is unique Identifier
+       3. Key-value databases can be fetched in constant time O(1)
+    3. Redis, Hazelcast, Riak, Voldemort & Memcache.
+    4. When?
+       1. fetch data real fas
+       2. Typical use cases
+          1. Caching
+          2. Persisting user state
+          3. Persisting user sessions
+          4. Managing real-time data
+          5. Implementing queues
+          6. Creating leaderboards in online games & web apps
+          7. Implementing a pub-sub system
+13. Time Series Database
+    1. What?
+       1. Time-Series databases are optimized for tracking & persisting time series data.
+       2. Time Series Data is the data containing data points associated with the occurrence of an event with respect to time.
+       3. These data points are tracked, monitored and then finally aggregated based on certain business logic.
+    2. IoT devices, self-driving vehicles, industry sensors, social networks, stock market financial data etc.
+    3. Why?
+       1. Studying data, streaming-in from applications helps us track the behaviour of the system
+       2. It helps us study user patterns, anomalies & how things change over time.
+       3. running analytics, deducing conclusions and making future business decisions
+    4. Influx DB, Timescale DB, Prometheus etc.
+    5. When?
+       1. need to manage data in real-time & continually over a long period of time
+       2. fetching data from IoT devices.
+       3. Managing data for running analytics & monitoring.
+       4. deals with changing stock prices in real-time etc.
+14. Wide-Column Database
+    1. What?
+       1. databases store data in a record with a dynamic number of columns.
+       2. A record can hold billions of columns.
+       3. primarily used to handle massive amounts of data, technically called the Big Data.
+       4. perfect for analytical use cases.
+    2. Cassandra, HBase, Google BigTable, Scylla DB etc.
+    3. When?
+       1. grapple with Big data, to ingest it or to run analytics on it
+       2. manage big data ensuring scalability, performance & high availability at the same time.
