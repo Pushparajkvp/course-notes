@@ -1085,3 +1085,111 @@ Go step by step through the different components and concepts involved in archit
       3. complexity is reduces
    2. Kappa is not an alternative for Lambda.
    3. Kappa is preferred if the batch and the streaming analytics results are fairly identical in a system.
+
+## Software Architecture
+
+1. Event Driven Architecture
+   1. What Is Blocking?
+      1. means the flow of execution is blocked waiting for a process to complete.
+   2. What Is Non-Blocking?
+      1. Code flow of execution continues by offloading task to a different thread/process
+      2. This increases complexity and looses consistency for a while
+   3. What Are Events?
+      1. Two kinds of process
+         1. CPU intensive
+         2. IO intensive
+            1. A large number of IO operations mean a lot of events occurring over a period of time.
+            2. an event can be anything from a tweet to a click of a button, an HTTP request, an ingested message, a change in the value of a variable etc.
+      2. Event-Driven Architecture
+         1. Non-blocking architecture is also known as the Reactive or the Event-driven architecture.
+            1. NodeJS is non blocking and event driven
+            2. capable of handling a big number of concurrent connections with minimal resource consumption.
+            3. reliable behaviour in a distributed environment.
+            4. write code without worrying about handling multi-threads, thread lock, out of memory issues due to high IO etc.
+         2. reacting to the events occurring regularly
+         3. Event-driven architecture is all about processing asynchronous data streams.
+         4. ![Event Based Architecture](images/EventArchitecture.jpg)
+      3. Technologies
+         1. Spring Reactor
+         2. NodeJS is a single-threaded non-blocking framework written to handle more IO intensive tasks.
+         3. NodeJS is not fit for CPU intensive tasks
+2. Web Hooks
+   1. What?
+      1. WebHooks are more like call-backs. It’s like I will call you when new information is available. You carry on with your work.
+      2. WebHooks enable communication between two services without a middleware.
+      3. They have an event-based mechanism.
+   2. How?
+      1. ![Web Hooks Working](images/WebHooks.jpg)
+3. Shared Nothing
+   1. Shared Nothing Architecture means eliminating all single points of failure. Every module has its own memory, own disk. So even if several modules in the system go down, the other modules online stay unaffected. It also helps with the scalability and performance.
+4. Hexagonal Architecture
+   1. Components
+      1. Ports
+      2. Adapters
+      3. Domain
+   2. What?
+      1. ![Hex Architecture](images/HexArchitecture.jpg)
+      2. independent, loosely coupled & easy to test.
+      3. holds the domain at its core
+      4. outer layer has Ports & Adapters.
+   3. Ports
+      1. Ports act like an API, as an interface
+      2. All the input to the app goes through the interface.
+      3. external entities don’t have any direct interaction with the domain
+   4. Adapter
+      1. Adapters convert the data obtained from the Ports, to be processed by the business logic.
+      2. Intermediary between ports and domain
+5. Peer to Peer Architecture
+   1. What?
+      1. base of blockchain tech, torrents etc.
+      2. nodes can communicate with each other without the need of a central server.
+      3. nodes can communicate with each other without the need of a central server.
+      4. All the computers in the network have equal rights.
+      5. ![P2P Architecture](images/P2P.jpg)
+   2. Downsides Of Centralized Systems
+      1. central server has access to all your messages.
+      2. natural disaster
+      3. Moderation
+   3. What Is A Decentralized Architecture?
+      1. Nobody has control over your data,
+      2. nobody has the power to delete your data
+      3. P2P network have equal rights
+   4. Advantages
+      1. P2P file sharing
+   5. How?
+      1. data is exchanged over TCP IP just like it happens over the HTTP protocol in a client-server model.
+      2. P2P design has an overlay network over TCP IP which enables the users to connect directly
+      3. Nodes/Peers are indexed & discoverable in this overlay network.
+   6. Types
+      1. Unstructured Network
+         1. nodes/peers keep connecting with each other randomly.
+         2. no indexing of the nodes.
+         3. Scan through each & every node of the network for file. (O(n))
+         4. Gossip, Kazaa & Gnutella
+      2. Structured Network
+         1. holds proper indexing of the nodes or the topology which makes it easier to search for a specific data in it.
+         2. Distributed hash table to index the nodes.
+         3. BitTorrent
+      3. Hybrid Model
+         1. involving both a peer to peer & a client-server model.
+      4. Tradepal, BitCoin, GitTorrent, Twister, Diaspora
+6. Decentralized Social Networks
+   1. What?
+      1. Nobody has autonomous control over the network, everybody has an equal say.
+      2. host our data from our systems
+   2. Minds, Mastodon, Diaspora, Friendica, Sola etc.
+   3. Features
+      1. Bring Your Own Data
+      2. Ensuring the Safety of Our Data
+      3. Economic Compensation to the parties involved in the network
+      4. Infrastructure Ease
+7. Federated Architecture
+   1. What?
+      1. extension to the decentralized architecture.
+      2. group of semi-autonomous entities exchanging information
+   2. How?
+      1. A large number of nodes subscribe to the pods.
+      2. link between a few pods breaks temporarily. The network is still up.
+      3. ![Federated Architecture](images/Federated.jpg)
+   3. Why?
+      1. Pods facilitate node discovery.
