@@ -962,3 +962,126 @@ Go step by step through the different components and concepts involved in archit
       1. Likes counter from different services can be updated by queueing concurrent requests
    2. Herd cache
       1. Multiple same cache miss can be avoided by queueing same cache requests
+
+## Stream Processing
+
+1. Intro
+   1. To manage the massive amount of streaming data we need to have sophisticated backend systems in place to gather meaningful information from it and archive/purge not so meaningful data.
+   2. Used in Data-Driven Systems
+   3. Use cases
+      1. IoT devices
+      2. wearable healthcare body sensors
+      3. tracking the service efficiency, for instance, getting Everything Is Okay signal from the IoT devices used by millions of customers.
+   4. Time-series databases is used
+2. Data Ingestion
+   1. What?
+      1. Data Ingestion is a collective term for the process of collecting data streaming-in from several different sources and making it ready to be processed by the system.
+      2. routed to different components/layers through the data pipelines, algorithms are run on it and is eventually archived.
+   2. Layers
+      1. Data collection layer
+      2. Data query layer
+      3. Data processing layer
+      4. Data visualization layer
+      5. Data storage layer
+      6. Data security layer
+   3. ![Data Ingestion](images/DataIngestion.jpg)
+   4. Data Standardization
+      1. Data streams-in into the system at different speeds & sizes
+      2. Every stream of data has different semantics.
+      3. This process of data standardization occurs in the Data collection and preparation layer.
+   5. Data Processing
+      1. processed based on the business requirements
+      2. It is generally classified into different flows, routed to different destinations.
+   6. Data Analysis
+      1. analytics is run on the data
+      2. predictive modelling, statistical analytics, text analytics etc.
+   7. Data Visualization
+      1. presented before the stakeholders
+      2. Kibana is one good example of a data visualization tool
+   8. Data Storage & Security
+      1. ensures the secure movement of data all along.
+3. Ways of Data Injestion
+   1. Two primary ways
+      1. Real-time
+         1. typically preferred in systems reading medical data
+         2. financial data like stock market events
+      2. Batches which run at regular intervals.
+         1. read trends over time
+         2. popularity of a sport in a region
+   2. Challenges
+      1. Slow Process
+         1. Because of data transformation, staging, transporting, security
+         2. Performing analytics on whole data gives better result that performing on real time data
+      2. Complex & Expensive
+         1. resource-intensive.
+         2. semantics of the data coming from externals sources changes sometimes
+      3. Moving Data Around Is Risky
+4. Use cases
+   1. Moving Big Data Into Hadoop
+   2. Streaming Data from Databases to Elasticsearch Server
+      1. Updates in the database must be streamed into elasticsearch for effective searching
+   3. Log Processing
+      1. Basically stream logs to a central place for visualization
+   4. Stream Processing Engines for Real-Time Events
+      1. In sports analysis ingest data, analyse it, figure out the behaviour in real-time & quickly push the updated information to the fans.
+5. Data Pipelines
+   1. What?
+      1. They facilitate the efficient flow of data from one point to another & also enable the developers to apply filters on the data streaming-in in real-time.
+   2. Features Of Data Pipelines
+      1. These ensure smooth flow of data.
+      2. Enables the business to apply filters and business logic on streaming data.
+      3. Avert any bottlenecks & redundancy in the data flow.
+      4. Facilitate parallel processing of data.
+      5. Avoid data being corrupted.
+   3. work on a set of rules predefined by the engineering teams 
+   4. entire flow of data extraction, transformation, combination, validation, converging of data from multiple streams into one etc. is completely automated.
+   5. ETL systems don't support real time streaming
+   6. What is ETL?
+      1. Extract Transform Load.
+      2. Extract means fetching data from single or multiple data sources
+      3. Transform means transforming the extracted heterogeneous data into a standardized format based on the rules set by the business.
+      4. Load means moving the transformed data to a data warehouse or another data storage location for further processing of data.
+      5. entire movement of data is done in batches as opposed to streaming it, through the data pipelines, in real-time.
+      6. batch processing approach is not obsolete.
+6. Distributed Data Processing
+   1. What?
+      1. Distributed data processing means diverging large amounts of data to several different nodes, running in a cluster, for parallel processing.
+      2. ![Distributed Data Processing](images/DistributedProcessing.jpg)
+      3. Apache Zookeeper is a pretty popular, de-facto, node co-ordinator used in the industry.
+      4. scalable & highly available.
+      5. Data is made redundant & replicated across the cluster to avoid any sort of data loss.
+   2. Technologies
+      1. MapReduce – Apache Hadoop
+         1. Map part of the programming model involves sorting the data based on a parameter
+         2. Reduce part involves summarizing the sorted data.
+      2. Apace Spark
+         1. open-source cluster computing framework.
+         2. Works with both batches and realtime data
+         3. has a cluster manager and distributed data storage.
+      3. Apache Storm
+         1. Apache Storm is a distributed stream processing framework.
+         2. massive amounts of streaming data.
+         3. real-time analytics, machine learning, distributed remote procedure calls etc.
+      4. Apache Kafka
+         1. open-source distributed stream processing & messaging platform.
+         2. The storage layer of Kafka involves a distributed scalable pub/sub message queue.
+         3. real-time features such as notification platforms, managing streams of massive amounts of data, monitoring website activity & metrics, messaging, log aggregation.
+      5. Hadoop is preferred for batch processing
+      6. Spark, Kafka & Storm are preferred for processing real-time streaming data.
+7. Lambda Architecture
+   1. What
+      1. ![Lambda Arch](images/LambdaArchitecture.jpg)
+      2. distributed data processing architecture
+      3. uses both batch processing & stream processing
+      4. joins the results from both the approaches before presenting it to the end user.
+   2. Layers
+       1. Batch Layer
+       2. Speed Layer
+       3. Serving layer
+8. Kappa Architecture
+   1. What?
+      1. ![Kappa Architecture](images/KappaArchitecture.jpg)
+      2. In Kappa architecture, all the data flows through a single data streaming pipeline as opposed to the Lambda architecture which has different data streaming layers that converge into one.
+      3. complexity is reduces
+   2. Kappa is not an alternative for Lambda.
+   3. Kappa is preferred if the batch and the streaming analytics results are fairly identical in a system.
