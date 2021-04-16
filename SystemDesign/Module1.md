@@ -1033,7 +1033,7 @@ Go step by step through the different components and concepts involved in archit
       3. Avert any bottlenecks & redundancy in the data flow.
       4. Facilitate parallel processing of data.
       5. Avoid data being corrupted.
-   3. work on a set of rules predefined by the engineering teams 
+   3. work on a set of rules predefined by the engineering teams
    4. entire flow of data extraction, transformation, combination, validation, converging of data from multiple streams into one etc. is completely automated.
    5. ETL systems don't support real time streaming
    6. What is ETL?
@@ -1193,3 +1193,54 @@ Go step by step through the different components and concepts involved in archit
       3. ![Federated Architecture](images/Federated.jpg)
    3. Why?
       1. Pods facilitate node discovery.
+
+## Case Study
+
+1. Google Maps
+   1. About google maps
+      1. satellite imagery
+      2. route planning features
+      3. real-time traffic conditions
+      4. API for writing map-based games like Pokemon Go
+   2. Read-Heavy Application
+      1. end-users aren’t generating new content in the application over time.
+      2. data can be largely cached and there will be significantly less load on the database.
+   3. Data Type: Spatial
+      1. a mapping application like this has spatial data.
+      2. patial data is the data with objects representing geometric information like points, lines, polygons
+   4. Database
+      1. Coordinates of place are stored in database
+      2. User searches for place and gets coordinates
+      3. coordinates are converted to map image
+      4. NoSQL database
+         1. Map does not have a lot of relationships
+         2. It's direct fetch or write
+         3. Horizonally scalable
+   5. Architecture
+      1. Client server
+   6. Backend Technology
+      1. Java, since it is performant, heavily used for writing scalable distributed systems, as well as for the enterprise development.
+   7. Monolith Vs Microservice
+      1. Features
+         1. Searching
+         2. Path finding
+         3. real time navigation
+         4. real time traffic update
+         5. API gateway for 3rd party apps
+      2. All these features can be implemented serperately as different microservice
+   8. Server-Side rendering
+      1. Map tiles can be cached in server and since these don't change often it is effective
+      2. ![Map Tiles Cache](images/MapTilesCache.jpg)
+   9. Real-time Features
+      1. persistent connection with the server.
+2. Ticket Booking Web Portal
+   1. Database
+      1. ACID compliant RDBMS is required
+   2. Handling Concurrency
+      1. Message Queues
+         1. Queue request and process one by one FIFO
+      2. Database Locks
+         1. Making use of locks in RDBMS to update the values
+   3. Caching
+      1. Have caches for pricing and available seats.
+      2. Update cache after a booking to keep cache consistent
