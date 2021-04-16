@@ -900,3 +900,65 @@ Go step by step through the different components and concepts involved in archit
       3. When?
          1. Write heavy system
          2. It might loose consistency when cache dies before updating db
+
+## Message Queue
+
+1. Intro
+   1. What?
+      1. Message queue as the name says is a queue which routes messages from the source to the destination or we can say from the sender to the receiver.
+      2. follows the FIFO (First in First Out) policy.
+      3. sent first is delivered first.
+      4. They also support priority
+      5. ![Message Queue](images/MessageQueue.jpg)
+   2. Features
+      1. facilitate asynchronous behaviour.
+      2. cross-module communication which is key in service-oriented or microservices
+      3. communication in a heterogeneous environment.
+      4. temporary storage for storing messages
+   3. Use Cases
+      1. Emails
+      2. BG tasks
+      3. Async behaviour
+      4. Notification systems
+      5. Batch process
+   4. Message queues size can be infinite
+2. Publisher Subscriber Model
+   1. What?
+      1. A Publish-Subscribe model is the model where multiple consumers receive the same message sent from a single or multiple producers.
+      2. ![Producer Subscriber](images/ProducerConsumer.jpg)
+   2. Exchanges
+      1. exchanges which further push the messages to the queues based on the exchange type
+      2. The relationship between exchange and the queue is known as Binding.
+      3. ![Queue Exchanges](images/QueueExchanges.jpg)
+      4. ![Educative Queue Exchange](images/QueueExchangesEducative.jpg)
+      5. Some Types
+         1. Direct
+            1. ![Direct Exchange](images/DirectExchanges.jpg)
+         2. Topic
+            1. route messages to one or many queues based on matching between a message routing key and the pattern that was used to bind a queue to an exchange.
+            2. used in pub sub model
+            3. Use case
+               1. Distributing data
+               2. Background task processing done by multiple workers
+         3. Fanout
+            1. routing key is ignored
+            2. ![Fan out exchange](images/FanOutExchanges.jpg)
+         4. Headers
+3. Point to Point Model
+   1. What?
+      1. Point to point communication is a pretty simple use case where the message from the producer is consumed by only one consumer.
+      2. one to one relationship, publish-subscribe model is a one to many relationship.
+      3. A message sent is only consumed by one consumer
+   2. Protocols -> AMQP Advanced Message Queue Protocol & STOMP Simple or Streaming Text Oriented Message Protocol.
+   3. Tech -> RabbitMQ, ActiveMQ, Apache Kafka
+4. Notification Systems & Real-time Feeds with Message Queues
+   1. Social Media Use Case
+      1. Polling
+         1. ![Polling MQ](images/MQPolling.jpg)
+      2. Pushing
+         1. ![Pusing MQ](images/MQPushing.jpg)
+5. Handling Concurrent Requests With Message Queues
+   1. Updating likes counter
+      1. Likes counter from different services can be updated by queueing concurrent requests
+   2. Herd cache
+      1. Multiple same cache miss can be avoided by queueing same cache requests
