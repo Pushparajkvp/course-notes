@@ -1,5 +1,43 @@
 # Thinking process while designing a system
 
+## Steps
+
+1. Requirements clarifications
+   1. Clarify Ambiguity
+   2. Define end goals clearly
+   3. Decide which part of the system to focus on
+   4. Twitter like system example
+      1. Will users of our service be able to post tweets and follow other people?
+      2. Should we also design to create and display the user’s timeline?
+      3. Will tweets contain photos and videos?
+      4. Are we focusing on the backend only, or are we developing the front-end too?
+      5. Will users be able to search tweets?
+      6. Do we need to display hot trending topics?
+      7. Will there be any push notification for new (or important) tweets?
+2. Back-of-the-envelope estimation
+   1. What scale is expected from the system
+   2. How much storage will we need?
+   3. What network bandwidth usage are we expecting?
+3. System interface definition
+   1. Define APIs
+   2. Ensure the APIs fullfill the requirements
+4. Defining data model
+   1. Identify entities in the system
+   2. How they interact
+   3. Various aspects of data
+   4. RDBMS or NoSQL?
+5. High-level design
+   1. representing the core components of our system
+   2. Use physical components that are critical without worrying about scale and performance
+6. Detailed design
+   1. Start the components deeper
+   2. Discuss about various approaches and trade-offs
+   3. decide on which is better for current system
+7. Look for bottlenecks
+   1. Identify Single Point of Failures
+   2. High Load scenarios
+   3. Monitoring performance of the services
+
 ## Choosing Database
 
 1. Nature of data
