@@ -1,4 +1,4 @@
-# Module 1
+# Module 1 - Web Application and Software Architecture
 
 ## Overview
 
