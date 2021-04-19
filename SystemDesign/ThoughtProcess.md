@@ -61,3 +61,28 @@
       1. When BASE(BAsically Available, Scalable and Eventually Consistent) is needed
       2. When Data schema will change rapidly
       3. When it is simple read and write withou complex reltionships
+
+## System Integration
+
+1. Gather functional and non functional requirements
+2. How immediate should the information be intergrated
+3. Check the reliability and availability of the integration systems
+4. Check if it is request/response or event driven
+5. Identify if sync or async communication is required
+   1. If sync
+      1. Check the reliability of the responder
+      2. Availability of the responder
+      3. If responder is not really available then
+         1. have a fallback to another component
+         2. Do circuit breaking
+         3. Try to cache and use during downtime
+      4. If the responder is not reliable
+         1. Do data transfoormation
+         2. data validation
+   2. If async
+      1. Find the producers of event
+      2. Find the consumers of event
+      3. Relationship between producers and consumers
+      4. Check if multiple consumers can consume a event or just one
+6. Estimate the amount of data
+7. Decide on sync delay

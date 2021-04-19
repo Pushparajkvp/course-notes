@@ -153,3 +153,16 @@
    5. Parallel queries
    6. Distributed nodes
    7. ![Nodes](images/TimeScaleDBNodes.jpg)
+
+## Elasticsearch
+
+1. What?
+   1. Full distributed
+   2. Analytics engine
+   3. Full text search
+   4. Inverted indices
+   5. RESTful
+   6. Real-time
+2. ![RDBMS vs ElasticSearch](images/RDBMsvsElasticsearch.jpg)
+3. It guesses schema automatically
+4. We can do Explicit mapping
