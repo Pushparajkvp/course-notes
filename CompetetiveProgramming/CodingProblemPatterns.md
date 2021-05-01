@@ -1,4 +1,4 @@
-# Grokking Coding Interview
+# Coding Problem Patterns
 
 1. 16 patterns of problem
    1. Sliding Window
@@ -300,7 +300,7 @@ Contiguous subarrays or substring computation
     }
     ```
 
-9.  Permutation in a String (hard)
+9. Permutation in a String (hard)
     1. Given a string and a pattern, find out if the string contains any permutation of the pattern.
     2. If a string has ‘n’ distinct characters, it will have n!n! permutations.
 
